@@ -19,14 +19,16 @@ namespace Algoromida_01.Controllers
             _algoromidaService = algoromidaService;
         }
 
-        public async Task<IActionResult> Index()
+        [HttpGet("{query}", Name = "RespondAsync")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Index(string query)
         {
-            var thisInteraction = await _algoromidaService.RespondAsync("jjsx", "Dona", "Hola");
-            var model = new UserBotInteractionViewModel()
+            if (!ModelState.IsValid)
             {
-                ThisInteraction = thisInteraction
-            };
-            return View(model);
+                return RedirectToAction("Index");
+            }
+            var CurrentInteraction = await _algoromidaService.RespondAsync("jjsx", "Dona", query);
+            return View(CurrentInteraction);
         }
     }      
 }

@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Algoromida_01.Areas.Identity.Data;
-using Algoromida_01.Models;
 
-namespace Algoromida_01.Areas.Identity.Data
+
+namespace Algoromida_01.Models
 {
     public class AlgoromidaContext : IdentityDbContext<AlgoromidaUser>
     {
@@ -22,9 +21,6 @@ namespace Algoromida_01.Areas.Identity.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            // Customize the ASP.NET Identity model and override the defaults if needed.
-            // For example, you can rename the ASP.NET Identity table names and more.
-            // Add your customizations after calling base.OnModelCreating(builder);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Algoromida_01.Areas.Identity.Data;
+using Algoromida_01.Models;
 
 namespace Algoromida_01.Areas.Identity.Pages.Account.Manage
 {

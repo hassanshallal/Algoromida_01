@@ -34,13 +34,6 @@ using Algoromida_01.Areas.Identity.Pages;
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "/Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/Areas/Identity/Pages/_ViewImports.cshtml"
-using Algoromida_01.Areas.Identity.Data;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
 #line 1 "/Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/Areas/Identity/Pages/Account/_ViewImports.cshtml"
 using Algoromida_01.Areas.Identity.Pages.Account;
 
@@ -48,7 +41,7 @@ using Algoromida_01.Areas.Identity.Pages.Account;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ca4ebda3859c49725e242502d2cc58bfdc8cca5d", @"/Areas/Identity/Pages/Account/_ViewImports.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1e28dce62f47fe3106a33b89a071ed0014bb1f53", @"/Areas/Identity/Pages/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"591ee27ca97f1cd9425f74506a0670028b24537f", @"/Areas/Identity/Pages/_ViewImports.cshtml")]
     public class Areas_Identity_Pages_Account__ViewImports : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

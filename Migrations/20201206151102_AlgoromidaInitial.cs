@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Algoromida_01.Migrations
 {
-    public partial class CustomUserData : Migration
+    public partial class AlgoromidaInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -49,6 +49,27 @@ namespace Algoromida_01.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Interactions",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    UserId = table.Column<string>(nullable: false),
+                    BotId = table.Column<string>(nullable: false),
+                    UserQuery = table.Column<string>(nullable: false),
+                    InitiatedAt = table.Column<DateTimeOffset>(nullable: false),
+                    BotResponse = table.Column<string>(nullable: false),
+                    BotAwareness = table.Column<string>(nullable: false),
+                    BotStatefulness = table.Column<string>(nullable: false),
+                    CompletedAt = table.Column<DateTimeOffset>(nullable: false),
+                    IsComplete = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Interactions", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -211,6 +232,9 @@ namespace Algoromida_01.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Interactions");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

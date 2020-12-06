@@ -41,7 +41,7 @@ namespace Algoromida_01
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
 
-            services.AddSingleton<IAlgoromidaService, FakeAlgoromidaService>();
+            services.AddScoped<IAlgoromidaService, AlgoromidaService>();
 
             services.AddControllersWithViews();
             services.AddRazorPages().AddRazorRuntimeCompilation();

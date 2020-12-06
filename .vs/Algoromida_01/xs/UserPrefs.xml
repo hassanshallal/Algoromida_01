@@ -1,14 +1,6 @@
 ﻿<Properties StartupConfiguration="{52DA8D85-119F-4933-B047-37B776738A58}|Default">
   <MonoDevelop.Ide.ItemProperties.Algoromida__01 PreferredExecutionTarget="/Applications/Safari.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/AlgoromidaController.cs">
-    <Files>
-      <File FileName="Views/Algoromida/Index.cshtml" Line="1" Column="1" />
-      <File FileName="Views/Shared/_Layout.cshtml" Line="38" Column="65" />
-      <File FileName="Controllers/AlgoromidaController.cs" Line="24" Column="95" />
-      <File FileName="Services/FakeAlgoromidaService.cs" Line="40" Column="101" />
-      <File FileName="Models/UserBotInteraction.cs" Line="1" Column="1" />
-      <File FileName="Models/UserBotInteractionViewModel.cs" Line="1" Column="1" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
@@ -17,10 +9,20 @@
               <Node name="Dependencies" expanded="True">
                 <Node name="PackageDependencies" expanded="True" />
               </Node>
-              <Node name="Authenticate" expanded="True" />
-              <Node name="Controllers" expanded="True">
-                <Node name="AlgoromidaController.cs" selected="True" />
+              <Node name="Areas" expanded="True">
+                <Node name="Identity" expanded="True">
+                  <Node name="Pages" expanded="True">
+                    <Node name="Account" expanded="True">
+                      <Node name="Manage" expanded="True">
+                        <Node name="_ManageNav.cshtml" selected="True" />
+                        <Node name="Index.cshtml" expanded="True" />
+                      </Node>
+                      <Node name="Register.cshtml" expanded="True" />
+                    </Node>
+                  </Node>
+                </Node>
               </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Services" expanded="True" />
               <Node name="Views" expanded="True">

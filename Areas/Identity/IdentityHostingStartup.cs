@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Algoromida_01.Areas.Identity.Data;
+using Algoromida_01.Models;
 
 [assembly: HostingStartup(typeof(Algoromida_01.Areas.Identity.IdentityHostingStartup))]
 namespace Algoromida_01.Areas.Identity

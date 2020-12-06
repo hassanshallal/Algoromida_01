@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
-using Algoromida_01.Areas.Identity.Data;
+using Algoromida_01.Models;
 
 namespace Algoromida_01.Areas.Identity.Pages.Account
 {

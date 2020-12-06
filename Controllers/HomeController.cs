@@ -13,8 +13,6 @@ namespace Algoromida_01.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        
-
         public HomeController(ILogger<HomeController> logger, IAlgoromidaService algoromidaService)
         {
             _logger = logger;
@@ -44,8 +42,6 @@ namespace Algoromida_01.Controllers
         {
             return View();
         }
-
-        
 
         public IActionResult Thermogena()
         {

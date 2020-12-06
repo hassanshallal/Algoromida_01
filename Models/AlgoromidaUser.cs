@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
-namespace Algoromida_01.Areas.Identity.Data
+namespace Algoromida_01.Models
 {
     public class AlgoromidaUser : IdentityUser
     {
