@@ -436,3 +436,5 @@
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Algoromida_01.pdb
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Algoromida_01.genruntimeconfig.cache
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/Register.cshtml.g.cs
+/Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/Algoromida/Index.cshtml.g.cs
+/Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/Algoromida/IssueQeuryPartial.cshtml.g.cs

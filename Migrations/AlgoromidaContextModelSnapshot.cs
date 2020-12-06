@@ -99,46 +99,39 @@ namespace Algoromida_01.Migrations
 
             modelBuilder.Entity("Algoromida_01.Models.UserBotInteraction", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("BotAwareness")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("BotId")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("BotResponse")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("BotStatefulness")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTimeOffset?>("CompletedAt")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTimeOffset?>("InitiatedAt")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsComplete")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("UserQuery")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Interactions");
                 });

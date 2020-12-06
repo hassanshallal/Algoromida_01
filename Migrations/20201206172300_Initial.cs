@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Algoromida_01.Migrations
 {
-    public partial class AlgoromidaInitial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -55,21 +55,20 @@ namespace Algoromida_01.Migrations
                 name: "Interactions",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    UserId = table.Column<string>(nullable: false),
-                    BotId = table.Column<string>(nullable: false),
+                    Id = table.Column<Guid>(nullable: false),
+                    UserId = table.Column<string>(nullable: true),
+                    BotId = table.Column<string>(nullable: true),
                     UserQuery = table.Column<string>(nullable: false),
-                    InitiatedAt = table.Column<DateTimeOffset>(nullable: false),
-                    BotResponse = table.Column<string>(nullable: false),
-                    BotAwareness = table.Column<string>(nullable: false),
-                    BotStatefulness = table.Column<string>(nullable: false),
-                    CompletedAt = table.Column<DateTimeOffset>(nullable: false),
+                    InitiatedAt = table.Column<DateTimeOffset>(nullable: true),
+                    BotResponse = table.Column<string>(nullable: true),
+                    BotAwareness = table.Column<string>(nullable: true),
+                    BotStatefulness = table.Column<string>(nullable: true),
+                    CompletedAt = table.Column<DateTimeOffset>(nullable: true),
                     IsComplete = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Interactions", x => x.ID);
+                    table.PrimaryKey("PK_Interactions", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(

@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 using System.Net;
 using System.Net.Http;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 using Algoromida_01.Models;
 
@@ -19,65 +21,43 @@ namespace Algoromida_01.Services
             _algoromidaContext = algoromidaContext;
         }
 
-
-        public async Task<UserBotInteraction[]> GetPreviousAsync(string userid, string botid)
+        public async Task<UserBotInteraction[]> GetPreviousAsync(AlgoromidaUser user)
         {
-            return await _algoromidaContext.Interactions.Where(x => x.UserId == userid & x.BotId == botid).ToArrayAsync();
+            return await _algoromidaContext.Interactions.Where(x => x.UserId == user.Id).ToArrayAsync();
         }
 
-        public async Task<UserBotInteraction> RespondAsync(string userid, string botid, string query)
+        public async Task<bool> RespondAsync(UserBotInteraction userBotInteraction, AlgoromidaUser user)
         {
-            var iniatedAt = DateTimeOffset.Now;
+            userBotInteraction.Id = Guid.NewGuid();
+            userBotInteraction.UserId = user.Id;
+            userBotInteraction.BotId = "Dona";
+            userBotInteraction.InitiatedAt = DateTimeOffset.Now;
 
-            Console.WriteLine("Making API Call...");
+            //Console.WriteLine("query from service is: " + userBotInteraction.UserQuery);
+            //Console.WriteLine("Making API Call...");
+
             var client = new HttpClient(new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate });
             client.BaseAddress = new Uri("https://08ddba9b69fc.ngrok.io/");
-            HttpResponseMessage response = client.GetAsync("predict?text=" + query).Result;
+            HttpResponseMessage response = client.GetAsync("predict?text=" + userBotInteraction.UserQuery).Result;
             var successful = response.IsSuccessStatusCode;
             if (!successful)
             {
-                //return BadRequest("Could not get Dona response.");
-                var completedAtPrematurely = DateTimeOffset.Now;
-                var dummInteraction = new UserBotInteraction
-                {
-                    UserId = userid,
-                    BotId = botid,
-                    UserQuery = query,
-                    InitiatedAt = iniatedAt,
-                    BotResponse = "",
-                    BotAwareness = "s",
-                    BotStatefulness = "0",
-                    CompletedAt = completedAtPrematurely,
-                    IsComplete = true
-
-                };
-                return dummInteraction;
+                return false;
             }
 
             string result = response.Content.ReadAsStringAsync().Result;
-            Console.WriteLine("Result: " + result);
 
-            Console.ReadLine();
-            var completedAt = DateTimeOffset.Now;
+            userBotInteraction.BotAwareness = "s";
+            userBotInteraction.BotStatefulness = "0";
+            userBotInteraction.BotResponse = result;
+            userBotInteraction.CompletedAt = DateTimeOffset.Now;
+            userBotInteraction.IsComplete = true;
 
-            var interaction1 = new UserBotInteraction
-            {
-                UserId = userid,
-                BotId = botid,
-                UserQuery = query,
-                InitiatedAt = iniatedAt,
-                BotResponse = result,
-                BotAwareness = "s",
-                BotStatefulness = "0",
-                CompletedAt = completedAt,
-                IsComplete = true
-
-            };
-            _algoromidaContext.Add(interaction1);
+            
+            _algoromidaContext.Add(userBotInteraction);
             var saveResult = await _algoromidaContext.SaveChangesAsync();
-            Console.WriteLine(saveResult);
-            //return saveResult == 1;
-            return interaction1;
+
+            return saveResult == 1;
         }
     }
 }

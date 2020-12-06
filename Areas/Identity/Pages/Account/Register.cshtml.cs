@@ -57,18 +57,6 @@ namespace Algoromida_01.Areas.Identity.Pages.Account
             [Display(Name = "Last Name")]
             public string LastName { get; set; }
 
-            [DataType(DataType.Text)]
-            [Display(Name = "Gender")]
-            public string Gender { get; set; }
-
-            [Display(Name = "Birth Date")]
-            [DataType(DataType.Date)]
-            public DateTime DOB { get; set; }
-
-            [DataType(DataType.Text)]
-            [Display(Name = "Location")]
-            public string Location { get; set; }
-
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
@@ -102,9 +90,6 @@ namespace Algoromida_01.Areas.Identity.Pages.Account
                 {
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
-                    Gender = Input.Gender,
-                    DOB = Input.DOB,
-                    Location = Input.Location,
                     UserName = Input.Email,
                     Email = Input.Email
                 };

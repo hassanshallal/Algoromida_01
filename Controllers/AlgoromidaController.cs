@@ -5,30 +5,67 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+
 using Algoromida_01.Models;
 using Algoromida_01.Services;
 
+
 namespace Algoromida_01.Controllers
 {
+    [Authorize]
     public class AlgoromidaController : Controller
     {
         private readonly IAlgoromidaService _algoromidaService;
+        private readonly UserManager<AlgoromidaUser> _userManager;
 
-        public AlgoromidaController(IAlgoromidaService algoromidaService)
+        public AlgoromidaController(IAlgoromidaService algoromidaService, UserManager<AlgoromidaUser> userManager)
         {
             _algoromidaService = algoromidaService;
+            _userManager = userManager;
         }
 
-        [HttpGet("{query}", Name = "RespondAsync")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index(string query)
+        public async Task<IActionResult> Index()
         {
+            var currentUser = await _userManager.GetUserAsync(User);
+            if (currentUser == null)
+            {
+                return Challenge();
+            }
+
+            var prevInteractions = await _algoromidaService.GetPreviousAsync(currentUser);
+
+            var model = new UserBotInteractionViewModel()
+            {
+                Interactions = prevInteractions
+            };
+
+            return View(model);
+        }
+
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Respond(UserBotInteraction userBotInteraction)
+        {
+            
             if (!ModelState.IsValid)
             {
                 return RedirectToAction("Index");
             }
-            var CurrentInteraction = await _algoromidaService.RespondAsync("jjsx", "Dona", query);
-            return View(CurrentInteraction);
+
+            var currentUser = await _userManager.GetUserAsync(User);
+            if (currentUser == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            bool successful = await _algoromidaService.RespondAsync(userBotInteraction, currentUser);
+            if (!successful)
+            {
+                return BadRequest("Could not communicate.");
+            }
+
+            return RedirectToAction("Index");
         }
     }      
 }

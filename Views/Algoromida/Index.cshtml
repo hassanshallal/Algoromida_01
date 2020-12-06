@@ -1,0 +1,39 @@
+﻿@model UserBotInteractionViewModel;
+
+@{
+    ViewData["Title"] = "Dona chat";
+}
+
+<div class="panel panel-default dona-interaction-panel">
+    <div class="panel-heading">@ViewData["Title"]</div>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>query</td>
+                <td>response</td>
+                <td>Like it</td>
+            </tr>
+        </thead>
+
+        @foreach (var interaction in Model.Interactions)
+        {
+        <tr>
+
+            <td>@interaction.UserQuery</td>
+            <td>@interaction.BotResponse</td>
+            <td>
+                <form asp-action="Like it" method="POST">
+                    <input type="checkbox" class="done-checkbox">
+                    <input type="hidden" name="id" value="@interaction.UserLikedIt">
+                </form>
+            </td>
+        </tr>
+        }
+    </table>
+
+    <div class="panel-footer issue_query_form">
+        @await Html.PartialAsync("IssueQeuryPartial", new UserBotInteraction())
+    </div>
+
+</div>
