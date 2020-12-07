@@ -1,10 +1,6 @@
 ﻿<Properties StartupConfiguration="{52DA8D85-119F-4933-B047-37B776738A58}|Default">
   <MonoDevelop.Ide.ItemProperties.Algoromida__01 PreferredExecutionTarget="/Applications/Safari.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Services/AlgoromidaService.cs">
-    <Files>
-      <File FileName="Services/AlgoromidaService.cs" Line="36" Column="1" />
-      <File FileName="Controllers/AlgoromidaController.cs" Line="72" Column="1" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
@@ -17,16 +13,13 @@
                 <Node name="Identity" expanded="True">
                   <Node name="Pages" expanded="True">
                     <Node name="Account" expanded="True">
-                      <Node name="Manage" expanded="True">
-                        <Node name="Index.cshtml" expanded="True" />
-                      </Node>
                       <Node name="Register.cshtml" expanded="True" />
                     </Node>
                   </Node>
                 </Node>
               </Node>
-              <Node name="Authenticate" expanded="True" />
               <Node name="Controllers" expanded="True" />
+              <Node name="Migrations" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Services" expanded="True">
                 <Node name="AlgoromidaService.cs" selected="True" />

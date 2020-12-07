@@ -58,6 +58,11 @@ namespace Algoromida_01.Areas.Identity.Pages.Account
             public string LastName { get; set; }
 
             [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Time zone")]
+            public string Location { get; set; }
+
+            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -90,6 +95,7 @@ namespace Algoromida_01.Areas.Identity.Pages.Account
                 {
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
+                    Location = Input.Location,
                     UserName = Input.Email,
                     Email = Input.Email
                 };

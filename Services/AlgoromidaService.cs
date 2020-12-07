@@ -8,8 +8,10 @@ using System.Net;
 using System.Net.Http;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+//using Json.Net;
 
 using Algoromida_01.Models;
+using System.Text;
 
 namespace Algoromida_01.Services
 {
@@ -33,12 +35,19 @@ namespace Algoromida_01.Services
             userBotInteraction.BotId = "Dona";
             userBotInteraction.InitiatedAt = DateTimeOffset.Now;
 
-            //Console.WriteLine("query from service is: " + userBotInteraction.UserQuery);
-            //Console.WriteLine("Making API Call...");
-
+            var donaPrimer = new Dictionary<string, object>
+            {
+                ["text"] = userBotInteraction.UserQuery,
+                ["senderInfo"] = ("(" + user.Id + ", ") + (user.FirstName + ", ") + (user.LastName + ", ") + (user.Location + ", ") + (user.Gender + ", ") + ("Algoromida)")
+            };
+            var payload = JsonSerializer.Serialize(donaPrimer);
+            
+            
             var client = new HttpClient(new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate });
-            client.BaseAddress = new Uri("https://08ddba9b69fc.ngrok.io/");
-            HttpResponseMessage response = client.GetAsync("predict?text=" + userBotInteraction.UserQuery).Result;
+            client.BaseAddress = new Uri("https://08ddba9b69fc.ngrok.io/predict?");
+            HttpContent body = new StringContent(payload, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = client.PostAsync(client.BaseAddress, body).Result;
+
             var successful = response.IsSuccessStatusCode;
             if (!successful)
             {
@@ -46,14 +55,14 @@ namespace Algoromida_01.Services
             }
 
             string result = response.Content.ReadAsStringAsync().Result;
+            var results = JsonSerializer.Deserialize<Dictionary<string, string>>(result);
 
-            userBotInteraction.BotAwareness = "s";
-            userBotInteraction.BotStatefulness = "0";
-            userBotInteraction.BotResponse = result;
+            userBotInteraction.BotResponse = results["BotResponse"];
+            userBotInteraction.BotAwareness = results["BotAwareness"];
+            userBotInteraction.BotStatefulness = results["BotStatefulness"];
             userBotInteraction.CompletedAt = DateTimeOffset.Now;
             userBotInteraction.IsComplete = true;
 
-            
             _algoromidaContext.Add(userBotInteraction);
             var saveResult = await _algoromidaContext.SaveChangesAsync();
 
