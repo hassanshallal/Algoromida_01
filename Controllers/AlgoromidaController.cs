@@ -26,6 +26,7 @@ namespace Algoromida_01.Controllers
             _userManager = userManager;
         }
 
+
         public async Task<IActionResult> Index()
         {
             var currentUser = await _userManager.GetUserAsync(User);
@@ -45,27 +46,27 @@ namespace Algoromida_01.Controllers
         }
 
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Respond(UserBotInteraction userBotInteraction)
+        public async Task<IActionResult> Respond(UserBotInteraction _userBotInteraction)
         {
             
             if (!ModelState.IsValid)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", _userBotInteraction.BotId);
             }
 
             var currentUser = await _userManager.GetUserAsync(User);
             if (currentUser == null)
-            {
-                return RedirectToAction("Index");
+            {                
+                return RedirectToAction("Index", _userBotInteraction.BotId);
             }
 
-            bool successful = await _algoromidaService.RespondAsync(userBotInteraction, currentUser);
+            bool successful = await _algoromidaService.RespondAsync(_userBotInteraction, currentUser);
             if (!successful)
-            {
-                return BadRequest("Could not communicate.");
+            {               
+                return BadRequest("Could not communicate with " + _userBotInteraction.BotId);
             }
 
             return RedirectToAction("Index");
         }
-    }      
+    }
 }

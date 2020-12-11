@@ -10,5 +10,6 @@ namespace Algoromida_01.Services
         Task<UserBotInteraction[]> GetPreviousAsync(AlgoromidaUser user);
 
         Task<bool> RespondAsync(UserBotInteraction userBotInteraction, AlgoromidaUser user);
+
     }
 }

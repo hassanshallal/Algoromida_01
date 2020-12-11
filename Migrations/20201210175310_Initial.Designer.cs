@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Algoromida_01.Migrations
 {
     [DbContext(typeof(AlgoromidaContext))]
-    [Migration("20201206172300_Initial")]
+    [Migration("20201210175310_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -123,11 +123,14 @@ namespace Algoromida_01.Migrations
                     b.Property<DateTimeOffset?>("InitiatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("IsComplete")
+                    b.Property<bool>("IsSuccessful")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("UserId")
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("UserLikedIt")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("UserQuery")
                         .IsRequired()

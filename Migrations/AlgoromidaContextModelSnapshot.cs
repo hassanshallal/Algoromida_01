@@ -121,11 +121,14 @@ namespace Algoromida_01.Migrations
                     b.Property<DateTimeOffset?>("InitiatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("IsComplete")
+                    b.Property<bool>("IsSuccessful")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("UserId")
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("UserLikedIt")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("UserQuery")
                         .IsRequired()

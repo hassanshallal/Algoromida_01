@@ -1,7 +1,7 @@
 ﻿@model UserBotInteractionViewModel;
 
 @{
-    ViewData["Title"] = "Dona chat";
+    ViewData["Title"] =  " chat";
 }
 
 <div class="panel panel-default dona-interaction-panel">
@@ -12,23 +12,15 @@
             <tr>
                 <td>query</td>
                 <td>response</td>
-                <td>Like it</td>
             </tr>
         </thead>
 
         @foreach (var interaction in Model.Interactions)
         {
-        <tr>
-
-            <td>@interaction.UserQuery</td>
-            <td>@interaction.BotResponse</td>
-            <td>
-                <form asp-action="Like it" method="POST">
-                    <input type="checkbox" class="done-checkbox">
-                    <input type="hidden" name="id" value="@interaction.UserLikedIt">
-                </form>
-            </td>
-        </tr>
+            <tr>
+                <td>@interaction.UserQuery</td>
+                <td>@interaction.BotResponse</td>
+            </tr>
         }
     </table>
 
@@ -37,3 +29,4 @@
     </div>
 
 </div>
+

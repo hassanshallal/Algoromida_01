@@ -4,40 +4,7 @@
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Algoromida_01" expanded="True">
-            <Node name="Algoromida_01" expanded="True">
-              <Node name="Dependencies" expanded="True">
-                <Node name="PackageDependencies" expanded="True" />
-              </Node>
-              <Node name="Areas" expanded="True">
-                <Node name="Identity" expanded="True">
-                  <Node name="Pages" expanded="True">
-                    <Node name="Account" expanded="True">
-                      <Node name="Register.cshtml" expanded="True" />
-                    </Node>
-                  </Node>
-                </Node>
-              </Node>
-              <Node name="Controllers" expanded="True" />
-              <Node name="Migrations" expanded="True" />
-              <Node name="Models" expanded="True" />
-              <Node name="Services" expanded="True">
-                <Node name="AlgoromidaService.cs" selected="True" />
-              </Node>
-              <Node name="Views" expanded="True">
-                <Node name="Algoromida" expanded="True" />
-                <Node name="Home" expanded="True" />
-                <Node name="Shared" expanded="True" />
-              </Node>
-              <Node name="wwwroot" expanded="True">
-                <Node name="lib" expanded="True">
-                  <Node name="jquery-validation" expanded="True">
-                    <Node name="dist" expanded="True" />
-                  </Node>
-                </Node>
-              </Node>
-            </Node>
-          </Node>
+          <Node name="Algoromida_01" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>

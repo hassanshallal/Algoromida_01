@@ -64,7 +64,8 @@ namespace Algoromida_01.Migrations
                     BotAwareness = table.Column<string>(nullable: true),
                     BotStatefulness = table.Column<string>(nullable: true),
                     CompletedAt = table.Column<DateTimeOffset>(nullable: true),
-                    IsComplete = table.Column<bool>(nullable: false)
+                    IsSuccessful = table.Column<bool>(nullable: false),
+                    UserLikedIt = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

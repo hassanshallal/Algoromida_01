@@ -10,6 +10,7 @@ namespace Algoromida_01.Models
 
         public string UserId { get; set; }
 
+        
         public string BotId { get; set; }
 
         [Required]
@@ -25,8 +26,17 @@ namespace Algoromida_01.Models
 
         public DateTimeOffset? CompletedAt { get; set; }
 
-        public bool IsComplete { get; set; }
+        public bool IsSuccessful { get; set; }
 
-        public bool UserLikedIt { get; }
+        public bool UserLikedIt { get; set; }
+
+
+        public UserBotInteraction()
+        {
+            Id = Guid.NewGuid();
+            BotId = "Dona";
+            InitiatedAt = DateTimeOffset.Now;
+            UserLikedIt = false;
+        }
     }
 }

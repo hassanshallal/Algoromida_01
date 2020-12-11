@@ -40,6 +40,7 @@ namespace Algoromida_01
             // using WebPWrecover.Services;
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
+            services.Configure<AuthDonaOptions>(Configuration);
 
             services.AddScoped<IAlgoromidaService, AlgoromidaService>();
 
