@@ -418,12 +418,9 @@
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/_ViewImports.cshtml.g.cs
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/_ViewStart.cshtml.g.cs
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/Home/About.cshtml.g.cs
-/Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/Home/Clusters.cshtml.g.cs
-/Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/Home/Dona.cshtml.g.cs
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/Home/Error.cshtml.g.cs
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/Home/Index.cshtml.g.cs
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/Home/Privacy.cshtml.g.cs
-/Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/Home/Thermogena.cshtml.g.cs
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/_ViewImports.cshtml.g.cs
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/_ViewStart.cshtml.g.cs
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Algoromida_01.RazorTargetAssemblyInfo.cache
@@ -436,5 +433,5 @@
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Algoromida_01.pdb
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Algoromida_01.genruntimeconfig.cache
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/Register.cshtml.g.cs
-/Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/Algoromida/Index.cshtml.g.cs
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/Algoromida/IssueQeuryPartial.cshtml.g.cs
+/Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/Algoromida/Index.cshtml.g.cs

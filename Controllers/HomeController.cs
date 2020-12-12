@@ -33,20 +33,6 @@ namespace Algoromida_01.Controllers
             return View();
         }
 
-        public IActionResult Clusters()
-        {
-            return View();
-        }
-
-        public IActionResult Dona()
-        {
-            return View();
-        }
-
-        public IActionResult Thermogena()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

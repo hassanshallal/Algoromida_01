@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -28,25 +28,28 @@ namespace Algoromida_01.Services
             Options = optionsAccessor.Value;
         }
 
-        private async Task<string> PreparePrevInteractions(AlgoromidaUser user)
+        private async Task<string> PreparePrevInteractions(AlgoromidaUser user, string botId)
         {
             // Get PrevIntearctions
-            UserBotInteraction[] PrevIntearctions;
-            PrevIntearctions = await GetPreviousAsync(user);
+            UserBotInteraction[] PrevIntearctions = await GetPreviousAsync(user, botId);
 
             // Iterate
             string previous = "";
-            foreach (var interaction in PrevIntearctions)
+            if(PrevIntearctions.Length > 0)
             {
-                previous = previous + interaction.UserId + "<>" + interaction.UserQuery + "<>" + interaction.BotResponse + "_";
+                foreach (var interaction in PrevIntearctions)
+                {
+                    previous = previous + interaction.UserId + "<>" + interaction.UserQuery + "<>" + interaction.BotResponse + "_";
+                }
+                previous = previous.Remove(previous.Length - 1, 1);
             }
-            previous = previous.Remove(previous.Length - 1, 1);
+            
             return previous;
         }
 
         private async Task<string> PreparePayload(UserBotInteraction userBotInteraction, AlgoromidaUser user)
         {
-            string previous = await PreparePrevInteractions(user);
+            string previous = await PreparePrevInteractions(user, userBotInteraction.BotId);
             var donaPrimer = new Dictionary<string, string>
             {
                 ["text"] = userBotInteraction.UserQuery,
@@ -85,9 +88,12 @@ namespace Algoromida_01.Services
             return results;
         }
 
-        public async Task<UserBotInteraction[]> GetPreviousAsync(AlgoromidaUser user)
+        public async Task<UserBotInteraction[]> GetPreviousAsync(AlgoromidaUser user, string botId)
         {
-            return await _algoromidaContext.Interactions.Where(x => x.UserId == user.Id).ToArrayAsync();
+            Console.Write("From AlgoromidaService GetPreviousAsync: " + botId);
+            Console.WriteLine();
+
+            return await _algoromidaContext.Interactions.Where(x => x.UserId == user.Id && x.BotId == botId).ToArrayAsync();
         }
 
         public async Task<bool> RespondAsync(UserBotInteraction userBotInteraction, AlgoromidaUser user)

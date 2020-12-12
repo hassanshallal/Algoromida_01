@@ -1,10 +1,42 @@
 ﻿<Properties StartupConfiguration="{52DA8D85-119F-4933-B047-37B776738A58}|Default">
   <MonoDevelop.Ide.ItemProperties.Algoromida__01 PreferredExecutionTarget="/Applications/Safari.app" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Services/AlgoromidaService.cs">
+    <Files>
+      <File FileName="Services/AlgoromidaService.cs" Line="33" Column="36" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Algoromida_01" expanded="True" selected="True" />
+          <Node name="Algoromida_01" expanded="True">
+            <Node name="Algoromida_01" expanded="True">
+              <Node name="Areas" expanded="True">
+                <Node name="Identity" expanded="True">
+                  <Node name="Pages" expanded="True">
+                    <Node name="Account" expanded="True">
+                      <Node name="Manage" expanded="True">
+                        <Node name="Index.cshtml" expanded="True" />
+                      </Node>
+                      <Node name="Register.cshtml" expanded="True" />
+                    </Node>
+                  </Node>
+                </Node>
+              </Node>
+              <Node name="Authenticate" expanded="True" />
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Services" expanded="True">
+                <Node name="AlgoromidaService.cs" selected="True" />
+              </Node>
+              <Node name="Views" expanded="True">
+                <Node name="Algoromida" expanded="True" />
+                <Node name="Home" expanded="True">
+                  <Node name="Error.cshtml" expanded="True" />
+                  <Node name="Index.cshtml" expanded="True" />
+                  <Node name="Privacy.cshtml" expanded="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
         </State>
       </Pad>
     </Pads>

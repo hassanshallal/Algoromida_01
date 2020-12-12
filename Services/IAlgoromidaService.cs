@@ -7,7 +7,7 @@ namespace Algoromida_01.Services
 {
     public interface IAlgoromidaService
     {
-        Task<UserBotInteraction[]> GetPreviousAsync(AlgoromidaUser user);
+        Task<UserBotInteraction[]> GetPreviousAsync(AlgoromidaUser user, string botid);
 
         Task<bool> RespondAsync(UserBotInteraction userBotInteraction, AlgoromidaUser user);
 

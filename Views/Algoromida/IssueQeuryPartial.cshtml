@@ -1,7 +1,8 @@
-﻿@model UserBotInteraction
+@model UserBotInteraction
 
-<form asp-action="Respond" method="POST">
-    <label asp-for="UserQuery">what do you want to say to Dona?</label>
-    <input asp-for="UserQuery">
-    <button type="submit">Submit</button>
-</form>
+    <form asp-action="Respond" method="POST" asp-route-botId="@Model.BotId">
+        @Html.AntiForgeryToken()
+        <label asp-for="UserQuery">Talk to @Model.BotId</label>
+        <input asp-for="UserQuery">
+        <button type="submit">Submit</button>
+    </form>

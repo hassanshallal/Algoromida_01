@@ -1,10 +1,10 @@
-﻿@model UserBotInteractionViewModel;
+@model UserBotInteractionViewModel;
 
 @{
-    ViewData["Title"] =  " chat";
+    ViewData["Title"] = "Your previous and current chat with " + Model.BotId;
 }
 
-<div class="panel panel-default dona-interaction-panel">
+<div class="panel panel-default bots-interaction-panel">
     <div class="panel-heading">@ViewData["Title"]</div>
 
     <table class="table table-hover">
@@ -25,7 +25,11 @@
     </table>
 
     <div class="panel-footer issue_query_form">
-        @await Html.PartialAsync("IssueQeuryPartial", new UserBotInteraction())
+        @{
+            UserBotInteraction userBotInteraction = new UserBotInteraction();
+            userBotInteraction.BotId = Model.BotId;
+        }
+        @await Html.PartialAsync("IssueQeuryPartial", userBotInteraction)
     </div>
 
 </div>
