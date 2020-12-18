@@ -1,8 +1,9 @@
 ﻿<Properties StartupConfiguration="{52DA8D85-119F-4933-B047-37B776738A58}|Default">
-  <MonoDevelop.Ide.ItemProperties.Algoromida__01 PreferredExecutionTarget="/Applications/Safari.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Services/AlgoromidaService.cs">
+  <MonoDevelop.Ide.ItemProperties.Algoromida__01 PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Algoromida/IssueQeuryPartial.cshtml">
     <Files>
-      <File FileName="Services/AlgoromidaService.cs" Line="33" Column="36" />
+      <File FileName="Services/AlgoromidaService.cs" Line="106" Column="51" />
+      <File FileName="Views/Algoromida/IssueQeuryPartial.cshtml" Line="29" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,27 +14,21 @@
                 <Node name="Identity" expanded="True">
                   <Node name="Pages" expanded="True">
                     <Node name="Account" expanded="True">
-                      <Node name="Manage" expanded="True">
-                        <Node name="Index.cshtml" expanded="True" />
-                      </Node>
                       <Node name="Register.cshtml" expanded="True" />
                     </Node>
                   </Node>
                 </Node>
               </Node>
-              <Node name="Authenticate" expanded="True" />
-              <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True" />
-              <Node name="Services" expanded="True">
-                <Node name="AlgoromidaService.cs" selected="True" />
-              </Node>
+              <Node name="Services" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Algoromida" expanded="True" />
-                <Node name="Home" expanded="True">
-                  <Node name="Error.cshtml" expanded="True" />
-                  <Node name="Index.cshtml" expanded="True" />
-                  <Node name="Privacy.cshtml" expanded="True" />
+                <Node name="Algoromida" expanded="True">
+                  <Node name="IssueQeuryPartial.cshtml" selected="True" />
                 </Node>
+                <Node name="Home" expanded="True" />
+                <Node name="Shared" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True" />
               </Node>
             </Node>
           </Node>

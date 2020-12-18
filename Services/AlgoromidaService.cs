@@ -9,7 +9,6 @@ using System.Net;
 using System.Net.Http;
 using System.Text.Json;
 
-
 using Algoromida_01.Models;
 using Algoromida_01.Authenticate;
 
@@ -98,7 +97,7 @@ namespace Algoromida_01.Services
 
         public async Task<bool> RespondAsync(UserBotInteraction userBotInteraction, AlgoromidaUser user)
         {
-            
+            Console.WriteLine("Respond entered");
             userBotInteraction.UserId = user.Id;
 
             string payload = await PreparePayload(userBotInteraction, user);           

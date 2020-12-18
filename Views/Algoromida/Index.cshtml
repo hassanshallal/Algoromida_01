@@ -1,36 +1,40 @@
 @model UserBotInteractionViewModel;
 
-@{
-    ViewData["Title"] = "Your previous and current chat with " + Model.BotId;
-}
-
-<div class="panel panel-default bots-interaction-panel">
-    <div class="panel-heading">@ViewData["Title"]</div>
-
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <td>query</td>
-                <td>response</td>
-            </tr>
-        </thead>
+    <div class="panel panel-default bots-interaction-panel">
+        <div class="panel-heading">@ViewData["Title"]</div>
 
         @foreach (var interaction in Model.Interactions)
         {
-            <tr>
-                <td>@interaction.UserQuery</td>
-                <td>@interaction.BotResponse</td>
-            </tr>
-        }
-    </table>
 
-    <div class="panel-footer issue_query_form">
-        @{
-            UserBotInteraction userBotInteraction = new UserBotInteraction();
-            userBotInteraction.BotId = Model.BotId;
+            <p class="userText"><span>@interaction.UserQuery</span></p>
+            <p class="botText"><span>@interaction.BotResponse</span></p>
+
         }
-        @await Html.PartialAsync("IssueQeuryPartial", userBotInteraction)
+
+        @if (Model.Interactions.Length > 0)
+        {
+            <script type="text/javascript">
+                        var textToSpeak = "@(Model.Interactions[Model.Interactions.Length - 1].BotResponse)";
+                        var utterance = new SpeechSynthesisUtterance(textToSpeak);
+                        window.speechSynthesis.speak(utterance);
+            </script>
+        }
+        else
+        {
+            <script type="text/javascript">
+                var textToSpeak = "'Welcome to ' + @Model.BotId";
+                var utterance = new SpeechSynthesisUtterance(textToSpeak);
+                window.speechSynthesis.speak(utterance);
+            </script>
+        }
+
+        <div class="panel-footer issue_query_form">
+            @{
+                UserBotInteraction userBotInteraction = new UserBotInteraction();
+                userBotInteraction.BotId = Model.BotId;
+            }
+            @await Html.PartialAsync("IssueQeuryPartial", userBotInteraction)
+        </div>
+
     </div>
-
-</div>
 
