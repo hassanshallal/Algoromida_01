@@ -1,17 +1,16 @@
 @{ ViewData["Title"] = "Welcome to Algoromida!"; }
+
 <body>
-    <center>
-        <a asp-controller="Algoromida" asp-action="Index" asp-route-botId="Dona">Talk to Dona.</a>
-    </center>
-    &nbsp;
-    <center>
-        <a asp-controller="Algoromida" asp-action="Index" asp-route-botId="Thermogena">Talk to Thermogena.</a>
-    </center>
-    &nbsp;
-    <div>
-        <center>
-            <img src="images/Original.png" style="width:40%;height:40%;">
-        </center>
+    <marquee behavior="alternate" scrollamount='30'>
+        <img src="images/Original.png" style="object-fit: cover;">
+    </marquee>
+
+    <div id="balls_container">
+        <a id="silverball" asp-controller="Algoromida" asp-action="Index" asp-route-botId="Dona">Dona</a>
+        <a id="yellowball" asp-controller="Algoromida" asp-action="Index" asp-route-botId="Thermogena">Thermogena</a>
+
+        <!-- partial -->
+        <script src="~/js/ball_script.js"></script>
     </div>
 </body>
 

@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{52DA8D85-119F-4933-B047-37B776738A58}|Default">
   <MonoDevelop.Ide.ItemProperties.Algoromida__01 PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Algoromida/Index.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Home/Index.cshtml">
     <Files>
-      <File FileName="Views/Algoromida/Index.cshtml" Line="62" Column="1" />
+      <File FileName="Views/Home/Index.cshtml" Line="5" Column="65" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -23,10 +23,10 @@
               <Node name="Models" expanded="True" />
               <Node name="Services" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Algoromida" expanded="True">
+                <Node name="Algoromida" expanded="True" />
+                <Node name="Home" expanded="True">
                   <Node name="Index.cshtml" selected="True" />
                 </Node>
-                <Node name="Home" expanded="True" />
                 <Node name="Shared" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">

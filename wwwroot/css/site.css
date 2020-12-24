@@ -224,3 +224,33 @@ img {
     position: relative;
     bottom: 0px;
 }
+
+/*moving balls style*/
+/* balls_container */
+#balls_container {
+    position:center;
+    height: 100%;
+    width: 100%;
+    background: #FFFFFF;
+}
+
+/* Balls */
+#silverball, #yellowball {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    text-align: center;
+    color: black;
+    line-height: 100px;
+    cursor: pointer;
+}
+
+#silverball {
+    background: #9D9D9D;
+}
+
+#yellowball {
+    background: #E8DF00;
+}
+

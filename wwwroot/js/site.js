@@ -4,6 +4,7 @@
 // Write your Javascript code
 
 //Speech recognition on chrome
+
 function runSpeechRecognition() {
     
     var output = document.getElementById("output");
@@ -38,3 +39,4 @@ function runSpeechRecognition() {
 // Make sure last interactions show on the page
 
 $('#chatmessages').scrollTop($('#chatmessages')[0].scrollHeight);
+
