@@ -1,6 +1,5 @@
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/bin/Debug/netcoreapp3.1/appsettings.Development.json
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/bin/Debug/netcoreapp3.1/appsettings.json
-/Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/bin/Debug/netcoreapp3.1/Properties/launchSettings.json
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/bin/Debug/netcoreapp3.1/Algoromida_01.StaticWebAssets.xml
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/bin/Debug/netcoreapp3.1/Algoromida_01.deps.json
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/bin/Debug/netcoreapp3.1/Algoromida_01.runtimeconfig.json
@@ -417,10 +416,8 @@
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml.g.cs
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/_ViewImports.cshtml.g.cs
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/_ViewStart.cshtml.g.cs
-/Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/Home/About.cshtml.g.cs
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/Home/Error.cshtml.g.cs
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/Home/Index.cshtml.g.cs
-/Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/Home/Privacy.cshtml.g.cs
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/_ViewImports.cshtml.g.cs
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/_ViewStart.cshtml.g.cs
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Algoromida_01.RazorTargetAssemblyInfo.cache
@@ -435,4 +432,5 @@
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/Register.cshtml.g.cs
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/Algoromida/IssueQeuryPartial.cshtml.g.cs
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/Algoromida/Index.cshtml.g.cs
-/Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/Algoromida/SpeechRecognitionScript.cshtml.g.cs
+/Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/scopedcss/bundle/Algoromida_01.styles.css
+/Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/bin/Debug/netcoreapp3.1/HtmlAgilityPack.dll

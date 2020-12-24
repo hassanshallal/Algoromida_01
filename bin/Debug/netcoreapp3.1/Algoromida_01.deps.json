@@ -24,6 +24,7 @@
     ".NETCoreApp,Version=v3.1": {
       "Algoromida_01/1.0.0": {
         "dependencies": {
+          "HtmlAgilityPack": "1.11.29",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "3.1.8",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.8",
           "Microsoft.AspNetCore.Identity.UI": "3.1.8",
@@ -300,6 +301,17 @@
         },
         "compile": {
           "Algoromida_01.dll": {}
+        }
+      },
+      "HtmlAgilityPack/1.11.29": {
+        "runtime": {
+          "lib/netstandard2.0/HtmlAgilityPack.dll": {
+            "assemblyVersion": "1.11.29.0",
+            "fileVersion": "1.11.29.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/HtmlAgilityPack.dll": {}
         }
       },
       "Microsoft.AspNetCore.Cryptography.Internal/3.1.8": {
@@ -3744,6 +3756,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "HtmlAgilityPack/1.11.29": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aCMPdyDUPU7z4fwMJ+4pbsUd669BWhIbC2rCo0upxBpYyblJHXNUjg5pxnk2iyqBg1C8gWF2fSxA1XERxcVZow==",
+      "path": "htmlagilitypack/1.11.29",
+      "hashPath": "htmlagilitypack.1.11.29.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Cryptography.Internal/3.1.8": {
       "type": "package",

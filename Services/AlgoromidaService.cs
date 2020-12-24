@@ -34,7 +34,7 @@ namespace Algoromida_01.Services
 
             // Iterate
             string previous = "";
-            if(PrevIntearctions.Length > 0)
+            if (PrevIntearctions.Length > 0)
             {
                 foreach (var interaction in PrevIntearctions)
                 {
@@ -42,7 +42,7 @@ namespace Algoromida_01.Services
                 }
                 previous = previous.Remove(previous.Length - 1, 1);
             }
-            
+
             return previous;
         }
 
@@ -55,8 +55,8 @@ namespace Algoromida_01.Services
                 ["senderInfo"] = ("(" + user.Id + ", ") + (user.FirstName + ", ") + (user.LastName + ", ") + (user.Location + ", ") + (user.Gender + ", ") + ("Algoromida)"),
                 ["prevInteactions"] = previous
             };
-            
-            string payload = JsonSerializer.Serialize(donaPrimer);            
+
+            string payload = JsonSerializer.Serialize(donaPrimer);
             return payload;
         }
 
@@ -100,9 +100,9 @@ namespace Algoromida_01.Services
             Console.WriteLine("Respond entered");
             userBotInteraction.UserId = user.Id;
 
-            string payload = await PreparePayload(userBotInteraction, user);           
+            string payload = await PreparePayload(userBotInteraction, user);
             var results = SendReceive(payload);
-    
+
             userBotInteraction.BotResponse = results["BotResponse"];
             userBotInteraction.BotAwareness = results["BotAwareness"];
             userBotInteraction.BotStatefulness = results["BotStatefulness"];

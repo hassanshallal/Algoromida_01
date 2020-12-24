@@ -26,10 +26,10 @@ namespace Algoromida_01.Controllers
             _userManager = userManager;
         }
 
-    
+
         public async Task<IActionResult> Index(string botId)
         {
-          
+
             var currentUser = await _userManager.GetUserAsync(User);
             if (currentUser == null)
             {
@@ -40,12 +40,13 @@ namespace Algoromida_01.Controllers
 
             var model = new UserBotInteractionViewModel()
             {
-		        BotId = botId,
-                Interactions = prevInteractions	
+                BotId = botId,
+                Interactions = prevInteractions
             };
 
             return View(model);
         }
+
 
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Respond(UserBotInteraction _userBotInteraction, string botId)

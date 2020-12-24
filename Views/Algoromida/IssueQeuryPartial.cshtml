@@ -1,39 +1,15 @@
 @model UserBotInteraction
 
-    <form align="center" asp-action="Respond" method="POST" asp-route-botId="@Model.BotId">
-        <script>/* JS comes here */
-            function runSpeechRecognition() {
+<form align="center" asp-action="Respond" method="POST" asp-route-botId="@Model.BotId">
+    @Html.AntiForgeryToken()
+    <center>
+        <div class="interaction_protocol">
+            <div class="input_msg_write">
+                <button class="msg_listen_btn" type="button" onclick="runSpeechRecognition()">I want to talk to @Model.BotId</button> &nbsp; <span id="action"></span>
+                <textarea asp-for="UserQuery" id="output" class="form-control"></textarea>
+                <button class="msg_send_btn" type="submit">Send it to @Model.BotId</button>
+            </div>
+        </div>
+    </center>
+</form>
 
-                var output = document.getElementById("output");
-
-                var action = document.getElementById("action");
-
-                var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
-                var recognition = new SpeechRecognition();
-
-                recognition.onstart = function () {
-                    action.innerHTML = "<small>listening, please speak...</small>";
-                };
-
-                recognition.onspeechend = function () {
-                    action.innerHTML = "<small>stopped listening, hope you are done...</small>";
-                    recognition.stop();
-                }
-
-                recognition.onresult = function (event) {
-                    var transcript = event.results[0][0].transcript;
-                    var confidence = event.results[0][0].confidence;
-                    output.innerHTML = transcript;
-                    output.classList.remove("hide");
-                };
-
-                recognition.start();
-            }</script>
-        @Html.AntiForgeryToken()
-        <p>Click on the bottom and say something...</p>
-        <button type="button" onclick="runSpeechRecognition()">I want to tell @Model.BotId</button> &nbsp; <span id="action"></span>
-        <textarea asp-for="UserQuery" id="output" class="form-control"></textarea>
-        <button type="submit">
-            Yes, this is correct, send this to @Model.BotId
-        </button>
-    </form>

@@ -1,9 +1,8 @@
 ﻿<Properties StartupConfiguration="{52DA8D85-119F-4933-B047-37B776738A58}|Default">
   <MonoDevelop.Ide.ItemProperties.Algoromida__01 PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Algoromida/IssueQeuryPartial.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Algoromida/Index.cshtml">
     <Files>
-      <File FileName="Services/AlgoromidaService.cs" Line="106" Column="51" />
-      <File FileName="Views/Algoromida/IssueQeuryPartial.cshtml" Line="29" Column="1" />
+      <File FileName="Views/Algoromida/Index.cshtml" Line="62" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,21 +13,26 @@
                 <Node name="Identity" expanded="True">
                   <Node name="Pages" expanded="True">
                     <Node name="Account" expanded="True">
+                      <Node name="Manage" expanded="True" />
                       <Node name="Register.cshtml" expanded="True" />
                     </Node>
                   </Node>
                 </Node>
               </Node>
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True" />
               <Node name="Services" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Algoromida" expanded="True">
-                  <Node name="IssueQeuryPartial.cshtml" selected="True" />
+                  <Node name="Index.cshtml" selected="True" />
                 </Node>
                 <Node name="Home" expanded="True" />
                 <Node name="Shared" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="css" expanded="True" />
+                <Node name="images" expanded="True" />
+                <Node name="js" expanded="True" />
               </Node>
             </Node>
           </Node>

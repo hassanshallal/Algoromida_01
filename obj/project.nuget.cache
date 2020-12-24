@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "7e20IGmqlFI230LwsRzAQaxkPVrSId2dEMtZbsUaqvgAgj/NP/VhVgymAUBF3TP21Wi+sEvqZM5oZuAQh7rGCw==",
+  "dgSpecHash": "e0mHYxJ9R8wpAcfYir9KKzODHum0fAVX948O5N4JEHQaiw/bAln4wjgT/1mBVY6X8jkZytp9KrK2iRZZeqtLyA==",
   "success": true,
   "projectFilePath": "/Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/Algoromida_01.csproj",
   "expectedPackageFiles": [
+    "/Users/hassanshallal/.nuget/packages/htmlagilitypack/1.11.29/htmlagilitypack.1.11.29.nupkg.sha512",
     "/Users/hassanshallal/.nuget/packages/microsoft.aspnetcore.cryptography.internal/3.1.8/microsoft.aspnetcore.cryptography.internal.3.1.8.nupkg.sha512",
     "/Users/hassanshallal/.nuget/packages/microsoft.aspnetcore.cryptography.keyderivation/3.1.8/microsoft.aspnetcore.cryptography.keyderivation.3.1.8.nupkg.sha512",
     "/Users/hassanshallal/.nuget/packages/microsoft.aspnetcore.diagnostics.entityframeworkcore/3.1.8/microsoft.aspnetcore.diagnostics.entityframeworkcore.3.1.8.nupkg.sha512",
