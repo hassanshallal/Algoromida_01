@@ -13,7 +13,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+
+
 using Algoromida_01.Models;
+using Algoromida_01.Services;
+using Microsoft.AspNetCore.Http;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Processing;
 
 namespace Algoromida_01.Areas.Identity.Pages.Account
 {
@@ -21,6 +27,7 @@ namespace Algoromida_01.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
+        private readonly IImageUpload _imageUpload;
         private readonly SignInManager<AlgoromidaUser> _signInManager;
         private readonly UserManager<AlgoromidaUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
@@ -30,12 +37,14 @@ namespace Algoromida_01.Areas.Identity.Pages.Account
             UserManager<AlgoromidaUser> userManager,
             SignInManager<AlgoromidaUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IImageUpload imageUpload)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _imageUpload = imageUpload;
         }
 
         [BindProperty]
@@ -56,11 +65,27 @@ namespace Algoromida_01.Areas.Identity.Pages.Account
             [DataType(DataType.Text)]
             [Display(Name = "Last Name")]
             public string LastName { get; set; }
+            
+            [DataType(DataType.Text)]
+            [Display(Name = "Gender")]
+            public string Gender { get; set; }
 
-            [Required]
+            [DataType(DataType.Date)]
+            [Display(Name = "Birth Date")]
+            public DateTime DOB { get; set; }
+
             [DataType(DataType.Text)]
             [Display(Name = "Time zone")]
-            public string Location { get; set; }
+            public string TimeZone { get; set; }
+
+            [DataType(DataType.Text)]
+            [Display(Name = "Country")]
+            public string Country { get; set; }
+
+            [DataType(DataType.Text)]
+            [Display(Name = "State")]
+            public string State { get; set; }
+
 
             [Required]
             [EmailAddress]
@@ -77,6 +102,10 @@ namespace Algoromida_01.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+
+            public string AvatarPath { get; set; }
+
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -85,8 +114,10 @@ namespace Algoromida_01.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
 
-        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        public async Task<IActionResult> OnPostAsync(IFormFile fromFile, string returnUrl = null)
         {
+            
+
             returnUrl = returnUrl ?? Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
@@ -95,10 +126,24 @@ namespace Algoromida_01.Areas.Identity.Pages.Account
                 {
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
-                    Location = Input.Location,
+                    Gender = Input.Gender,
+                    DOB = Input.DOB.Date,
+                    TimeZone = Input.TimeZone,
+                    Country = Input.Country,
+                    State = Input.State,
+                    Email = Input.Email,
                     UserName = Input.Email,
-                    Email = Input.Email
+                    AvatarPath = Guid.NewGuid().ToString()
                 };
+
+                // We need to name the avatar based on user.Id
+                if (_imageUpload.validateUploadedFile(fromFile))
+                {
+                    var ext = _imageUpload.getImageExtension(fromFile);
+                    user.AvatarPath = user.AvatarPath + ext;
+                    _imageUpload.UploadImage(fromFile, user.AvatarPath);
+                }
+                
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
@@ -135,6 +180,8 @@ namespace Algoromida_01.Areas.Identity.Pages.Account
             // If we got this far, something failed, redisplay form
             return Page();
         }
+
+        
     }
     #endregion
 }

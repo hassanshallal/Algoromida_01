@@ -17,7 +17,7 @@
 
                 <!-- use user avatar instead in the img source in received_msg_img-->
                 <div class="recieved">
-                    <span class="received_msg_img"> <img src="/images/Original.png"></span>
+                    <span class="received_msg_img"> <img src="@interaction.UserAvatarPath"></span>
                     <div class="received_msg">
                         <p>
                             @interaction.UserQuery
@@ -26,37 +26,21 @@
                     </div>
                 </div>
                 <div class="outgoing">
-                    <span class="outgoing_msg_img"> <img src="/images/Original.png"></span>
+                    <span class="outgoing_msg_img"> <img src="@interaction.BotAvatarPath"></span>
                     <div class="outgoing_msg">
                         <p>
                             @interaction.BotResponse
                         </p>
                         <span class="time_date">@completedAtTrimmed</span>
-
                     </div>
-
                 </div>
             }
-            @if (Model.Interactions.Length > 0)
-            {
-                <script>
-                    // More options at: https://codepen.io/matt-west/pen/wGzuJ
-                    // This is to speak the botResponse
-                    function runSpeechSynthesis(lastBotResponse) {
-                        console.log(lastBotResponse); // just for debugging text anomalies 
-                        var utterance = new SpeechSynthesisUtterance(lastBotResponse);
-                        window.speechSynthesis.speak(utterance);
-                    };
 
-                    var lastBotResponse = "@Model.GetLastBotInteraction()";
-                    var lastBotResponse = String(lastBotResponse).replaceAll("&#x27;", "'");
-                    var lastBotResponse = String(lastBotResponse).replaceAll("&quot;", "")
-                    runSpeechSynthesis(lastBotResponse);
-                </script>
-            }
-            else
-            {
-                <script>
+
+            @{
+                if (Model.Interactions.Length == 0)
+                {
+                    <script>
                     // This is to welcome a new user
 
                     function runSpeechWelcome(botName) {
@@ -67,9 +51,39 @@
 
                     var botName = "@Model.BotId";
                     runSpeechWelcome(botName);
-                </script>
-            }
+                    </script>
+                }
+                else
+                {
+                    DateTimeOffset timeNow = DateTimeOffset.Now;
+                    DateTimeOffset lastBotResponse = DateTimeOffset.Now; ;
 
+                    DateTimeOffset? lastBotResponseOffset = Model.Interactions[Model.Interactions.Length - 1].CompletedAt;
+                    if (lastBotResponseOffset.HasValue)
+                    {
+                        lastBotResponse = lastBotResponseOffset.Value;
+                        TimeSpan diff = timeNow - lastBotResponse;
+                        if (diff.Seconds < 10)
+                        {
+                            <script>
+                                // More options at: https://codepen.io/matt-west/pen/wGzuJ
+                                // This is to speak the botResponse
+                                function runSpeechSynthesis(lastBotResponse) {
+                                    console.log(lastBotResponse); // just for debugging text anomalies
+                                    var utterance = new SpeechSynthesisUtterance(lastBotResponse);
+                                    window.speechSynthesis.speak(utterance);
+                                };
+
+                                var lastBotResponse = "@Model.GetLastBotInteraction()";
+                                var lastBotResponse = String(lastBotResponse).replaceAll("&#x27;", "'");
+                                var lastBotResponse = String(lastBotResponse).replaceAll("&quot;", "")
+                                runSpeechSynthesis(lastBotResponse);
+                            </script>
+                        }
+                    }
+
+                }
+            }
         </div>
     </div>
     

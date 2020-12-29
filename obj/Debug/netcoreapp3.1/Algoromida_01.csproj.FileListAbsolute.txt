@@ -434,3 +434,8 @@
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/Algoromida/Index.cshtml.g.cs
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/scopedcss/bundle/Algoromida_01.styles.css
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/bin/Debug/netcoreapp3.1/HtmlAgilityPack.dll
+/Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/bin/Debug/netcoreapp3.1/intro/assets/DA1C1ACC-47AD-4365-9558-E3235BE14D90/DA1C1ACC-47AD-4365-9558-E3235BE14D90.json
+/Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/bin/Debug/netcoreapp3.1/intro/assets/header.json
+/Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/bin/Debug/netcoreapp3.1/Microsoft.IO.RecyclableMemoryStream.dll
+/Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/bin/Debug/netcoreapp3.1/SixLabors.ImageSharp.dll
+/Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/bin/Debug/netcoreapp3.1/SixLabors.ImageSharp.Web.dll

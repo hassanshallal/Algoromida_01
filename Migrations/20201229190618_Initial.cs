@@ -44,7 +44,10 @@ namespace Algoromida_01.Migrations
                     LastName = table.Column<string>(nullable: false),
                     Gender = table.Column<string>(nullable: true),
                     DOB = table.Column<DateTime>(nullable: false),
-                    Location = table.Column<string>(nullable: true)
+                    TimeZone = table.Column<string>(nullable: true),
+                    Country = table.Column<string>(nullable: true),
+                    State = table.Column<string>(nullable: true),
+                    AvatarPath = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -65,7 +68,9 @@ namespace Algoromida_01.Migrations
                     BotStatefulness = table.Column<string>(nullable: true),
                     CompletedAt = table.Column<DateTimeOffset>(nullable: true),
                     IsSuccessful = table.Column<bool>(nullable: false),
-                    UserLikedIt = table.Column<bool>(nullable: false)
+                    UserLikedIt = table.Column<bool>(nullable: false),
+                    BotAvatarPath = table.Column<string>(nullable: true),
+                    UserAvatarPath = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

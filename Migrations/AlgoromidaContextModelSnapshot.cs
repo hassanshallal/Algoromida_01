@@ -24,8 +24,15 @@ namespace Algoromida_01.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("AvatarPath")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Country")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("DOB")
@@ -47,9 +54,6 @@ namespace Algoromida_01.Migrations
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Location")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("LockoutEnabled")
@@ -78,6 +82,12 @@ namespace Algoromida_01.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("State")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TimeZone")
+                        .HasColumnType("TEXT");
+
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("INTEGER");
 
@@ -103,6 +113,9 @@ namespace Algoromida_01.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("BotAvatarPath")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("BotAwareness")
                         .HasColumnType("TEXT");
 
@@ -123,6 +136,9 @@ namespace Algoromida_01.Migrations
 
                     b.Property<bool>("IsSuccessful")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("UserAvatarPath")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("UserId")
                         .HasColumnType("TEXT");

@@ -42,6 +42,7 @@ namespace Algoromida_01
             services.Configure<AuthMessageSenderOptions>(Configuration);
             services.Configure<AuthDonaOptions>(Configuration);
 
+            services.AddSingleton<IImageUpload, ImageUpload>();
             services.AddScoped<IAlgoromidaService, AlgoromidaService>();
 
             services.AddControllersWithViews();

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Hosting;
 
 using System.Net;
 using System.Net.Http;
@@ -14,17 +15,18 @@ using Algoromida_01.Authenticate;
 
 using System.Text;
 
+
 namespace Algoromida_01.Services
 {
     public class AlgoromidaService : IAlgoromidaService
     {
         private readonly AlgoromidaContext _algoromidaContext;
-        public AuthDonaOptions Options { get; }
+        public AuthDonaOptions _options { get; }
 
-        public AlgoromidaService(AlgoromidaContext algoromidaContext, IOptions<AuthDonaOptions> optionsAccessor)
+        public AlgoromidaService(AlgoromidaContext algoromidaContext, IOptions<AuthDonaOptions> optionsAccessor, IWebHostEnvironment webHostEnvironment)
         {
             _algoromidaContext = algoromidaContext;
-            Options = optionsAccessor.Value;
+            _options = optionsAccessor.Value;
         }
 
         private async Task<string> PreparePrevInteractions(AlgoromidaUser user, string botId)
@@ -46,24 +48,36 @@ namespace Algoromida_01.Services
             return previous;
         }
 
-        private async Task<string> PreparePayload(UserBotInteraction userBotInteraction, AlgoromidaUser user)
+        private async Task<Dictionary<string, string>> PreparePayload(UserBotInteraction userBotInteraction, AlgoromidaUser user)
         {
             string previous = await PreparePrevInteractions(user, userBotInteraction.BotId);
-            var donaPrimer = new Dictionary<string, string>
+            var primer = new Dictionary<string, string>
             {
+                ["botName"] = userBotInteraction.BotId,
                 ["text"] = userBotInteraction.UserQuery,
-                ["senderInfo"] = ("(" + user.Id + ", ") + (user.FirstName + ", ") + (user.LastName + ", ") + (user.Location + ", ") + (user.Gender + ", ") + ("Algoromida)"),
+                ["senderInfo"] = ("(" + user.Id + ", ") + (user.FirstName + ", ") + (user.LastName + ", ") + (user.TimeZone + ", ") + (user.Gender + ", ") + ("Algoromida)"),
                 ["prevInteactions"] = previous
             };
 
-            string payload = JsonSerializer.Serialize(donaPrimer);
-            return payload;
+            
+            return primer;
         }
 
-        private Dictionary<string, string> SendReceive(string payload)
+        private Dictionary<string, string> SendReceive(Dictionary<string, string> primer)
         {
             var client = new HttpClient(new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate });
-            client.BaseAddress = new Uri(Options.DonaTunnel);
+            if (primer["botName"] == "Dona")
+            {
+                Console.WriteLine("DonaTunnel");
+                client.BaseAddress = new Uri(_options.DonaTunnel);
+            }
+            else if (primer["botName"] == "Thermogena")
+            {
+                Console.WriteLine("ThermogenaTunnel");
+                client.BaseAddress = new Uri(_options.ThermogenaTunnel);
+            }
+
+            string payload = JsonSerializer.Serialize(primer);
             HttpContent body = new StringContent(payload, Encoding.UTF8, "application/json");
             Console.Write(body);
             HttpResponseMessage response = client.PostAsync(client.BaseAddress, body).Result;
@@ -89,7 +103,7 @@ namespace Algoromida_01.Services
 
         public async Task<UserBotInteraction[]> GetPreviousAsync(AlgoromidaUser user, string botId)
         {
-            Console.Write("From AlgoromidaService GetPreviousAsync: " + botId);
+            Console.Write("From Algoromida Service GetPreviousAsync: " + botId);
             Console.WriteLine();
 
             return await _algoromidaContext.Interactions.Where(x => x.UserId == user.Id && x.BotId == botId).ToArrayAsync();
@@ -99,10 +113,14 @@ namespace Algoromida_01.Services
         {
             Console.WriteLine("Respond entered");
             userBotInteraction.UserId = user.Id;
+            userBotInteraction.BotAvatarPath = "/images/" + userBotInteraction.BotId + ".jpeg";
+            userBotInteraction.UserAvatarPath = "/uploads/" + user.AvatarPath;
 
-            string payload = await PreparePayload(userBotInteraction, user);
-            var results = SendReceive(payload);
+            Dictionary<string, string> primer = await PreparePayload(userBotInteraction, user);
+            Console.WriteLine("botname from primer" + primer["botName"]);
 
+            var results = SendReceive(primer);
+            
             userBotInteraction.BotResponse = results["BotResponse"];
             userBotInteraction.BotAwareness = results["BotAwareness"];
             userBotInteraction.BotStatefulness = results["BotStatefulness"];

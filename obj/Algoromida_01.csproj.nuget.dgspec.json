@@ -79,6 +79,14 @@
             "SendGrid": {
               "target": "Package",
               "version": "[9.21.2, )"
+            },
+            "SixLabors.ImageSharp": {
+              "target": "Package",
+              "version": "[1.0.2, )"
+            },
+            "SixLabors.ImageSharp.Web": {
+              "target": "Package",
+              "version": "[1.0.1, )"
             }
           },
           "imports": [

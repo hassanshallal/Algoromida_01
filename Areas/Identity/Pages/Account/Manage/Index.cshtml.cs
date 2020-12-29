@@ -24,16 +24,18 @@ namespace Algoromida_01.Areas.Identity.Pages.Account.Manage
             _signInManager = signInManager;
         }
 
-        public string Username { get; set; }
+        
 
         [TempData]
         public string StatusMessage { get; set; }
 
         [BindProperty]
         public InputModel Input { get; set; }
+        public string AvatarPath { get; private set; }
 
         public class InputModel
         {
+
             [Required]
             [DataType(DataType.Text)]
             [Display(Name = "First Name")]
@@ -44,21 +46,40 @@ namespace Algoromida_01.Areas.Identity.Pages.Account.Manage
             [Display(Name = "Last Name")]
             public string LastName { get; set; }
 
+            [Required]
             [DataType(DataType.Text)]
             [Display(Name = "Gender")]
             public string Gender { get; set; }
 
+            [Required]
             [Display(Name = "Birth Date")]
             [DataType(DataType.Date)]
             public DateTime DOB { get; set; }
 
+            [Required]
             [DataType(DataType.Text)]
-            [Display(Name = "Location")]
-            public string Location { get; set; }
+            [Display(Name = "TimeZone")]
+            public string TimeZone { get; set; }
 
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Country")]
+            public string Country { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "State")]
+            public string State { get; set; }
+
+            [Required]
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+
+            [Required]
+            [Display(Name = "Your avatar")]
+            public string AvatarPath { get; set; }
+
         }
 
         private async Task LoadAsync(AlgoromidaUser user)
@@ -66,15 +87,15 @@ namespace Algoromida_01.Areas.Identity.Pages.Account.Manage
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
 
-            Username = userName;
-
             Input = new InputModel
             {
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Gender = user.Gender,
                 DOB = user.DOB,
-                Location = user.Location,
+                TimeZone = user.TimeZone,
+                Country = user.Country,
+                State = user.State,
                 PhoneNumber = phoneNumber
             };
         }
@@ -89,6 +110,7 @@ namespace Algoromida_01.Areas.Identity.Pages.Account.Manage
             }
 
             await LoadAsync(user);
+            AvatarPath = user.AvatarPath;
             return Page();
         }
 
@@ -141,9 +163,14 @@ namespace Algoromida_01.Areas.Identity.Pages.Account.Manage
                 user.DOB = Input.DOB;
             }
 
-            if (Input.Location != user.Location)
+            if (Input.Country != user.Country)
             {
-                user.Location = Input.Location;
+                user.Country = Input.Country;
+            }
+
+            if (Input.State != user.State)
+            {
+                user.State = Input.State;
             }
 
             await _userManager.UpdateAsync(user);

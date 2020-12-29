@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
+// Here, we want to add UserPostback, BotOptions, ResponseImages and think of how this can be represented
 namespace Algoromida_01.Models
 {
     public class UserBotInteraction
@@ -30,11 +31,13 @@ namespace Algoromida_01.Models
 
         public bool UserLikedIt { get; set; }
 
+        public string BotAvatarPath { get; set; }
+
+        public string UserAvatarPath { get; set; }
 
         public UserBotInteraction()
         {
             Id = Guid.NewGuid();
-            BotId = "Dona";
             InitiatedAt = DateTimeOffset.Now;
             UserLikedIt = false;
         }
