@@ -1,38 +1,6 @@
 ﻿<Properties StartupConfiguration="{52DA8D85-119F-4933-B047-37B776738A58}|Default">
   <MonoDevelop.Ide.ItemProperties.Algoromida__01 PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="Algoromida_01" expanded="True">
-            <Node name="Algoromida_01" expanded="True">
-              <Node name="Areas" expanded="True">
-                <Node name="Identity" expanded="True">
-                  <Node name="Pages" expanded="True">
-                    <Node name="Account" expanded="True">
-                      <Node name="Register.cshtml" expanded="True" />
-                    </Node>
-                  </Node>
-                </Node>
-              </Node>
-              <Node name="Models" expanded="True">
-                <Node name="UserBotInteractionViewModel.cs" selected="True" />
-              </Node>
-              <Node name="Services" expanded="True" />
-              <Node name="Views" expanded="True">
-                <Node name="Algoromida" expanded="True" />
-                <Node name="Home" expanded="True" />
-                <Node name="Shared" expanded="True" />
-              </Node>
-              <Node name="wwwroot" expanded="True">
-                <Node name="css" expanded="True" />
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

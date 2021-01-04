@@ -6,7 +6,8 @@ namespace Algoromida_01.Services
 {
     public interface IImageUpload
     {
-        bool validateUploadedFile(IFormFile fromFile);
+        Task<bool> scanFile(string tempFileName);
+	bool validateUploadedFile(IFormFile fromFile);
         string getImageExtension(IFormFile fromFile);
         void UploadImage(IFormFile fromFile, string newName);
     }

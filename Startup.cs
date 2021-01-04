@@ -1,25 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Identity.UI.Services;
 
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.EntityFrameworkCore;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation;
-using Algoromida_01.Models;
+using Microsoft.AspNetCore.HttpOverrides;
+
 using Algoromida_01.Authenticate;
 using Algoromida_01.Services;
-
-using SendGrid;
+using System;
+using Microsoft.AspNetCore.Http;
 
 namespace Algoromida_01
 {
@@ -35,27 +27,48 @@ namespace Algoromida_01
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // requires
-            // using Microsoft.AspNetCore.Identity.UI.Services;
-            // using WebPWrecover.Services;
-            services.AddTransient<IEmailSender, EmailSender>();
-            services.Configure<AuthMessageSenderOptions>(Configuration);
-            services.Configure<AuthDonaOptions>(Configuration);
+            services.AddControllersWithViews();
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.ForwardedHeaders =
+                    ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+            });
 
+            services.AddHsts(options =>
+            {
+                options.Preload = true;
+                options.IncludeSubDomains = true;
+                options.MaxAge = TimeSpan.FromDays(60);
+                options.ExcludedHosts.Add("algoromida.com");
+                options.ExcludedHosts.Add("www.algoromida.com");
+            });
+
+            services.AddHttpsRedirection(options =>
+            {
+                options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
+                options.HttpsPort = 5001;
+            });
+
+            services.Configure<AuthMessageSenderOptions>(Configuration);
+            services.Configure<AuthAlgoromidaOptions>(Configuration);
+
+            services.AddTransient<IEmailSender, EmailSender>();
             services.AddSingleton<IImageUpload, ImageUpload>();
             services.AddScoped<IAlgoromidaService, AlgoromidaService>();
 
-            services.AddControllersWithViews();
+            
             services.AddRazorPages().AddRazorRuntimeCompilation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseForwardedHeaders();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
+                
             }
             else
             {
@@ -66,11 +79,14 @@ namespace Algoromida_01
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseCookiePolicy();
 
             app.UseRouting();
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            //app.UseMvc();
 
             app.UseEndpoints(endpoints =>
             {
@@ -81,6 +97,7 @@ namespace Algoromida_01
                         pattern: "{controller=Home}/{action=Index}/{id?}");
                 });
                 endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
         }
     }

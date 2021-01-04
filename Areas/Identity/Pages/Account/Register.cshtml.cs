@@ -137,11 +137,16 @@ namespace Algoromida_01.Areas.Identity.Pages.Account
                 };
 
                 // We need to name the avatar based on user.Id
+                _logger.LogInformation("Start image upload.");
                 if (_imageUpload.validateUploadedFile(fromFile))
                 {
                     var ext = _imageUpload.getImageExtension(fromFile);
                     user.AvatarPath = user.AvatarPath + ext;
                     _imageUpload.UploadImage(fromFile, user.AvatarPath);
+                }
+                else {
+                    _logger.LogInformation("UnvalidateUploadedFile.");
+                    user.AvatarPath = "";
                 }
                 
                 var result = await _userManager.CreateAsync(user, Input.Password);

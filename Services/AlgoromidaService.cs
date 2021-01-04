@@ -21,9 +21,9 @@ namespace Algoromida_01.Services
     public class AlgoromidaService : IAlgoromidaService
     {
         private readonly AlgoromidaContext _algoromidaContext;
-        public AuthDonaOptions _options { get; }
+        public AuthAlgoromidaOptions _options { get; }
 
-        public AlgoromidaService(AlgoromidaContext algoromidaContext, IOptions<AuthDonaOptions> optionsAccessor, IWebHostEnvironment webHostEnvironment)
+        public AlgoromidaService(AlgoromidaContext algoromidaContext, IOptions<AuthAlgoromidaOptions> optionsAccessor)
         {
             _algoromidaContext = algoromidaContext;
             _options = optionsAccessor.Value;
@@ -114,7 +114,7 @@ namespace Algoromida_01.Services
             Console.WriteLine("Respond entered");
             userBotInteraction.UserId = user.Id;
             userBotInteraction.BotAvatarPath = "/images/" + userBotInteraction.BotId + ".jpeg";
-            userBotInteraction.UserAvatarPath = "/uploads/" + user.AvatarPath;
+            userBotInteraction.UserAvatarPath = "/home/hshallal/Algoromida_01/uploads/" + user.AvatarPath;
 
             Dictionary<string, string> primer = await PreparePayload(userBotInteraction, user);
             Console.WriteLine("botname from primer" + primer["botName"]);
