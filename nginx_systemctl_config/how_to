@@ -1,0 +1,7 @@
+/etc/nginx/nginx.conf
+/etc/nginx/sites-available/algoromida.com
+
+/etc/systemd/system/Algoromida_01.service
+
+Above are the locations of these critical files
+https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx?view=aspnetcore-5.0

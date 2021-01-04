@@ -55,15 +55,15 @@
                 }
                 else
                 {
-                    DateTimeOffset timeNow = DateTimeOffset.Now;
                     DateTimeOffset lastBotResponse = DateTimeOffset.Now; ;
 
                     DateTimeOffset? lastBotResponseOffset = Model.Interactions[Model.Interactions.Length - 1].CompletedAt;
                     if (lastBotResponseOffset.HasValue)
                     {
+                        DateTimeOffset timeNow = DateTimeOffset.Now;
                         lastBotResponse = lastBotResponseOffset.Value;
                         TimeSpan diff = timeNow - lastBotResponse;
-                        if (diff.Seconds < 10)
+                        if (diff.Seconds < 5)
                         {
                             <script>
                                 // More options at: https://codepen.io/matt-west/pen/wGzuJ

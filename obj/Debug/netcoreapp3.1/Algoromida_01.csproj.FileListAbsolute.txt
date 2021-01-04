@@ -437,7 +437,6 @@
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/bin/Debug/netcoreapp3.1/Microsoft.Extensions.FileProviders.Physical.dll
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/bin/Debug/netcoreapp3.1/Microsoft.Extensions.FileSystemGlobbing.dll
 /Users/hassanshallal/Desktop/Algoromida_2021/Algoromida_01/Algoromida_01/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Options.ConfigurationExtensions.dll
-/home/hshallal/Algoromida_01/Algoromida_01/bin/Debug/netcoreapp3.1/appsettings.json
 /home/hshallal/Algoromida_01/Algoromida_01/bin/Debug/netcoreapp3.1/Properties/launchSettings.json
 /home/hshallal/Algoromida_01/Algoromida_01/bin/Debug/netcoreapp3.1/Algoromida_01.StaticWebAssets.xml
 /home/hshallal/Algoromida_01/Algoromida_01/bin/Debug/netcoreapp3.1/Algoromida_01
@@ -879,3 +878,4 @@
 /home/hshallal/Algoromida_01/Algoromida_01/bin/Debug/netcoreapp3.1/nClam.dll
 /home/hshallal/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/Login.cshtml.g.cs
 /home/hshallal/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/Manage/Logout.cshtml.g.cs
+/home/hshallal/Algoromida_01/Algoromida_01/bin/Debug/netcoreapp3.1/appsettings.json

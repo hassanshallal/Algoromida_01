@@ -1,0 +1,24 @@
+[Unit]
+Description= mvcnew webapp
+
+[Service]
+WorkingDirectory=/home/hshallal/Algoromida_01/Algoromida_01
+ExecStart=/usr/bin/dotnet /home/hshallal/Algoromida_01/Algoromida_01/bin/Debug/netcoreapp3.1/Algoromida_01.dll
+
+User=hshallal
+
+Restart=always
+# Restart service after 10 seconds if the dotnet service crashes:
+RestartSec=10
+
+SyslogIdentifier=mvcnew
+
+Environment=ASPNETCORE_ENVIRONMENT=Production
+Environment=SendGridUser=hshallal
+Environment=SendGridKey=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
+Environment=DonaTunnel=https://c7286fd761f8.ngrok.io/Dona
+Environment=ThermogenaTunnel=https://c7286fd761f8.ngrok.io/Thermogena
+
+[Install]
+WantedBy=multi-user.target
+

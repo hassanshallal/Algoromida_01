@@ -130,7 +130,7 @@ namespace Algoromida_01.Services
 
         private string GetPathAndFilenameTemp(string filename)
         {
-            string path = "/home/hshallal/Algoromida_01/temp/";
+            string path = _webHostEnvironment.WebRootPath + "/temp/";
 
             if (!Directory.Exists(path))
             {
@@ -143,7 +143,7 @@ namespace Algoromida_01.Services
 
         private string GetPathAndFilename(string filename)
         {
-            string path = "/home/hshallal/Algoromida_01/uploads/";
+            string path = _webHostEnvironment.WebRootPath + "/uploads/";
 
             if (!Directory.Exists(path))
             {

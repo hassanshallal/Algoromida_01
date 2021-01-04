@@ -114,7 +114,7 @@ namespace Algoromida_01.Services
             Console.WriteLine("Respond entered");
             userBotInteraction.UserId = user.Id;
             userBotInteraction.BotAvatarPath = "/images/" + userBotInteraction.BotId + ".jpeg";
-            userBotInteraction.UserAvatarPath = "/home/hshallal/Algoromida_01/uploads/" + user.AvatarPath;
+            userBotInteraction.UserAvatarPath = "/uploads/" + user.AvatarPath;
 
             Dictionary<string, string> primer = await PreparePayload(userBotInteraction, user);
             Console.WriteLine("botname from primer" + primer["botName"]);
