@@ -38,7 +38,6 @@ namespace Algoromida_01.Models
         public UserBotInteraction()
         {
             Id = Guid.NewGuid();
-            InitiatedAt = DateTimeOffset.Now;
             UserLikedIt = false;
         }
     }

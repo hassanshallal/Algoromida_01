@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "/Register"
 @using Algoromida_01.Areas.Identity.Pages.Account
 @model RegisterModel
 @{
@@ -96,7 +96,7 @@
         </div>
         <div class="col">
             <div class="form-group">
-                <label asp-for="Input.AvatarPath"></label>
+                <label asp-for="Input.AvatarPath">Please upload an avatar (Image less than 2MB)</label>
                 <input type="file" name="fromFile" class="form-control" />
                 <span asp-validation-for="Input.AvatarPath" class="text-danger"></span>
             </div>

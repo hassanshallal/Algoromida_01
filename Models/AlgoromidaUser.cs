@@ -36,7 +36,6 @@ namespace Algoromida_01.Models
         public string State { get; set; }
 
         [PersonalData]
-        [Required(ErrorMessage = "Please upload an image that does not exceed 2MB.")]
         public string AvatarPath { get; set; }
     }
 }

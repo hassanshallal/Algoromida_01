@@ -22,7 +22,7 @@ namespace Algoromida_01.Controllers
             _userManager = userManager;
         }
 
-
+	[Route("interactions/{botId}")]
         public async Task<IActionResult> Index(string botId)
         {
 
@@ -43,7 +43,7 @@ namespace Algoromida_01.Controllers
             return View(model);
         }
 
-
+	[Route("response by/{botId}")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Respond(UserBotInteraction _userBotInteraction, string botId)
         {

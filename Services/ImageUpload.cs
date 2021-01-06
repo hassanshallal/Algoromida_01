@@ -77,7 +77,7 @@ namespace Algoromida_01.Services
             return ext;
         }
 
-        public async void UploadImage(IFormFile fromFile, string newName)
+        public async Task<bool> UploadImage(IFormFile fromFile, string newName)
         {
             _imageUploadLogger.LogInformation("Start uploading");
 
@@ -99,25 +99,26 @@ namespace Algoromida_01.Services
                     }
                 }
             }
-
+	     
             _imageUploadLogger.LogInformation("Start scanning");
             bool result = await scanFile(tempFileName);
-            //bool result = false;
+
             _imageUploadLogger.LogInformation("result: {0}", result);
             if (result)
             {
                 string finalFileName = GetPathAndFilename(newName);
                 File.Move(tempFileName, finalFileName);
                 _imageUploadLogger.LogInformation("Passed & moved");
+                return true;
             }
             else
             {
                 File.Delete(tempFileName);
                 _imageUploadLogger.LogInformation("Unpassed & deleted");
+                return false;
             }
-
         }
-
+   
         private string EnsureFileName(string filename)
         {
             if (filename.Contains("//"))

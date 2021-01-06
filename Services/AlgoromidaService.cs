@@ -113,6 +113,7 @@ namespace Algoromida_01.Services
         {
             Console.WriteLine("Respond entered");
             userBotInteraction.UserId = user.Id;
+	    userBotInteraction.InitiatedAt = DateTimeOffset.Now.AddHours(Int32.Parse(user.TimeZone));
             userBotInteraction.BotAvatarPath = "/images/" + userBotInteraction.BotId + ".jpeg";
             userBotInteraction.UserAvatarPath = "/uploads/" + user.AvatarPath;
 
@@ -124,7 +125,7 @@ namespace Algoromida_01.Services
             userBotInteraction.BotResponse = results["BotResponse"];
             userBotInteraction.BotAwareness = results["BotAwareness"];
             userBotInteraction.BotStatefulness = results["BotStatefulness"];
-            userBotInteraction.CompletedAt = DateTimeOffset.Now;
+	    userBotInteraction.CompletedAt = DateTimeOffset.Now.AddHours(Int32.Parse(user.TimeZone));
             if (results["isSuccessful"] == "true")
             {
                 userBotInteraction.IsSuccessful = true;

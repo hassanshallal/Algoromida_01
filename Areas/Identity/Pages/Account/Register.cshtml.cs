@@ -27,11 +27,12 @@ namespace Algoromida_01.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-        private readonly IImageUpload _imageUpload;
+        
         private readonly SignInManager<AlgoromidaUser> _signInManager;
         private readonly UserManager<AlgoromidaUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly IImageUpload _imageUpload;
 
         public RegisterModel(
             UserManager<AlgoromidaUser> userManager,
@@ -116,8 +117,6 @@ namespace Algoromida_01.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(IFormFile fromFile, string returnUrl = null)
         {
-            
-
             returnUrl = returnUrl ?? Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
@@ -138,55 +137,62 @@ namespace Algoromida_01.Areas.Identity.Pages.Account
 
                 // We need to name the avatar based on user.Id
                 _logger.LogInformation("Start image upload.");
-                if (_imageUpload.validateUploadedFile(fromFile))
+                bool validateImage = _imageUpload.validateUploadedFile(fromFile);
+                if (validateImage)
                 {
                     var ext = _imageUpload.getImageExtension(fromFile);
                     user.AvatarPath = user.AvatarPath + ext;
-                    _imageUpload.UploadImage(fromFile, user.AvatarPath);
+                    bool uploadResult = await _imageUpload.UploadImage(fromFile, user.AvatarPath);
+                    if (uploadResult)
+                    {
+                        _logger.LogInformation("clean and validated uploaded File.");
+                        var result = await _userManager.CreateAsync(user, Input.Password);
+                        if (result.Succeeded)
+                        {
+                            _logger.LogInformation("User created a new account with password.");
+
+                            var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                            code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+                            var callbackUrl = Url.Page(
+                                "/Account/ConfirmEmail",
+                                pageHandler: null,
+                                values: new { area = "Identity", userId = user.Id, code = code },
+                                protocol: Request.Scheme);
+
+                            await _emailSender.SendEmailAsync(Input.Email,
+                                "Confirm your email",
+                                $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+
+                            if (_userManager.Options.SignIn.RequireConfirmedAccount)
+                            {
+                                return RedirectToPage("RegisterConfirmation", new { email = Input.Email });
+                            }
+                            else
+                            {
+                                await _signInManager.SignInAsync(user, isPersistent: false);
+                                return LocalRedirect(returnUrl);
+                            }
+                        }
+                        foreach (var error in result.Errors)
+                        {
+                            ModelState.AddModelError(string.Empty, error.Description);
+                        }
+                    }
+                    else
+                    {
+                        _logger.LogInformation("Virus_scanned positive File.");
+                        user.AvatarPath = "";
+                    }
                 }
                 else {
                     _logger.LogInformation("UnvalidateUploadedFile.");
                     user.AvatarPath = "";
-                }
-                
-                var result = await _userManager.CreateAsync(user, Input.Password);
-                if (result.Succeeded)
-                {
-                    _logger.LogInformation("User created a new account with password.");
-
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    var callbackUrl = Url.Page(
-                        "/Account/ConfirmEmail",
-                        pageHandler: null,
-                        values: new { area = "Identity", userId = user.Id, code = code },
-                        protocol: Request.Scheme);
-
-                    await _emailSender.SendEmailAsync(Input.Email,
-                        "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-
-                    if (_userManager.Options.SignIn.RequireConfirmedAccount)
-                    {
-                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email });
-                    }
-                    else
-                    {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return LocalRedirect(returnUrl);
-                    }
-                }
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
 
             // If we got this far, something failed, redisplay form
             return Page();
         }
-
-        
     }
     #endregion
 }

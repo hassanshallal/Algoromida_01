@@ -9,6 +9,6 @@ namespace Algoromida_01.Services
         Task<bool> scanFile(string tempFileName);
 	bool validateUploadedFile(IFormFile fromFile);
         string getImageExtension(IFormFile fromFile);
-        void UploadImage(IFormFile fromFile, string newName);
+        Task<bool> UploadImage(IFormFile fromFile, string newName);
     }
 }

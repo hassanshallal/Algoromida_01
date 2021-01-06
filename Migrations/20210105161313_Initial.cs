@@ -47,7 +47,7 @@ namespace Algoromida_01.Migrations
                     TimeZone = table.Column<string>(nullable: true),
                     Country = table.Column<string>(nullable: true),
                     State = table.Column<string>(nullable: true),
-                    AvatarPath = table.Column<string>(nullable: false)
+                    AvatarPath = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

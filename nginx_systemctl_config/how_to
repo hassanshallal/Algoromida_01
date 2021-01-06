@@ -4,4 +4,18 @@
 /etc/systemd/system/Algoromida_01.service
 
 Above are the locations of these critical files
-https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx?view=aspnetcore-5.0
+
+1- main source: https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx?view=aspnetcore-5.0
+2- for aparmor: https://www.hiroom2.com/2017/06/13/ubuntu-16-04-usage-of-apparmor/
+apparmor was confugured for nginx as in the tutorial
+tutorial saved as a pdf in the parent development directory
+
+3- for modsecurity: https://www.modsecurity.org
+WAF: Web Application Firewall
+
+https://medium.com/building-goalwise/how-to-implement-modsecurity-waf-with-nginx-15fdd42fa3
+https://www.nginx.com/blog/compiling-and-installing-modsecurity-for-open-source-nginx/
+
+Now, with apparmor and mod security activated, we will move into another level applying modsecurity:
+
+https://docs.nginx.com/nginx-waf/admin-guide/nginx-plus-modsecurity-waf-owasp-crs/

@@ -25,7 +25,6 @@ namespace Algoromida_01.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("AvatarPath")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ConcurrencyStamp")

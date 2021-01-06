@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Algoromida_01.Migrations
 {
     [DbContext(typeof(AlgoromidaContext))]
-    [Migration("20210104173330_Initial")]
+    [Migration("20210105161313_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,7 +27,6 @@ namespace Algoromida_01.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("AvatarPath")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ConcurrencyStamp")
