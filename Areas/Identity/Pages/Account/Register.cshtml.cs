@@ -136,57 +136,69 @@ namespace Algoromida_01.Areas.Identity.Pages.Account
                 };
 
                 // We need to name the avatar based on user.Id
-                _logger.LogInformation("Start image upload.");
-                bool validateImage = _imageUpload.validateUploadedFile(fromFile);
-                if (validateImage)
+                bool uploadResult = false;
+                if (fromFile != null)
                 {
-                    var ext = _imageUpload.getImageExtension(fromFile);
-                    user.AvatarPath = user.AvatarPath + ext;
-                    bool uploadResult = await _imageUpload.UploadImage(fromFile, user.AvatarPath);
-                    if (uploadResult)
+                    _logger.LogInformation("Start image upload.");
+                    
+
+                    bool validateImage = _imageUpload.validateUploadedFile(fromFile);
+                    if (validateImage)
                     {
-                        _logger.LogInformation("clean and validated uploaded File.");
-                        var result = await _userManager.CreateAsync(user, Input.Password);
-                        if (result.Succeeded)
-                        {
-                            _logger.LogInformation("User created a new account with password.");
-
-                            var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                            code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                            var callbackUrl = Url.Page(
-                                "/Account/ConfirmEmail",
-                                pageHandler: null,
-                                values: new { area = "Identity", userId = user.Id, code = code },
-                                protocol: Request.Scheme);
-
-                            await _emailSender.SendEmailAsync(Input.Email,
-                                "Confirm your email",
-                                $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-
-                            if (_userManager.Options.SignIn.RequireConfirmedAccount)
-                            {
-                                return RedirectToPage("RegisterConfirmation", new { email = Input.Email });
-                            }
-                            else
-                            {
-                                await _signInManager.SignInAsync(user, isPersistent: false);
-                                return LocalRedirect(returnUrl);
-                            }
-                        }
-                        foreach (var error in result.Errors)
-                        {
-                            ModelState.AddModelError(string.Empty, error.Description);
-                        }
+                        var ext = _imageUpload.getImageExtension(fromFile);
+                        user.AvatarPath = user.AvatarPath + ext;
+                        uploadResult = await _imageUpload.UploadImage(fromFile, user.AvatarPath);
                     }
                     else
                     {
-                        _logger.LogInformation("Virus_scanned positive File.");
-                        user.AvatarPath = "";
+                        _logger.LogInformation("UnvalidateUploadedFile.");
+                    }
+
+                } else
+                {
+                    _logger.LogInformation("User didn't upload an image.");
+                    user.AvatarPath = "";
+                }
+                
+               
+                if (uploadResult || fromFile == null)
+                {
+                    _logger.LogInformation("clean and validated uploaded File.");
+                    var result = await _userManager.CreateAsync(user, Input.Password);
+                    if (result.Succeeded)
+                    {
+                        _logger.LogInformation("User created a new account with password.");
+
+                        var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                        code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+                        var callbackUrl = Url.Page(
+                            "/Account/ConfirmEmail",
+                            pageHandler: null,
+                            values: new { area = "Identity", userId = user.Id, code = code },
+                            protocol: Request.Scheme);
+
+                        await _emailSender.SendEmailAsync(Input.Email,
+                            "Confirm your email",
+                            $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+
+                        if (_userManager.Options.SignIn.RequireConfirmedAccount)
+                        {
+                            return RedirectToPage("RegisterConfirmation", new { email = Input.Email });
+                        }
+                        else
+                        {
+                            await _signInManager.SignInAsync(user, isPersistent: false);
+                            return LocalRedirect(returnUrl);
+                        }
+                    }
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
                     }
                 }
-                else {
-                    _logger.LogInformation("UnvalidateUploadedFile.");
-                    user.AvatarPath = "";
+                else
+                {
+                    _logger.LogInformation("Virus_scanned positive File or the file is unvalidated in terms of size or type.");
                 }
             }
 
