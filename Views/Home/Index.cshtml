@@ -1,19 +1,25 @@
 @{ ViewData["Title"] = "Welcome to Algoromida!"; }
 
 <body>
-    <div id="balls_container">
-        <center>
-            <p>You can chat with Dona, chief artifical cognition prototype at Algoromida. Please notice full featured Dona is currently available only on <a href="https://www.google.com/chrome/">Google Chrome</a>.</p>
-            <br>
-            <a asp-controller="Algoromida" asp-action="Index" asp-route-botId="Dona">Talk to Dona now.</a>
-        </center>
-    </div>
-    <br>
+     <center>
+        <div class="rack">
+            <div class="rack_msg">
+                <h6>AlgoChat</h6>
+                <p><a asp-controller="Algoromida" asp-action="Index" asp-route-botId="Dona" style="color:#E8DF00">Click here to talk to Dona now!</a></p>
+            </div>
+        </div>
+        <br>
+        <p>You can chat with Dona, chief artifical cognition prototype at Algoromida. Please notice full featured Dona is currently available only on <a href="https://www.google.com/chrome/" target="_blank">Google Chrome</a>.</p>
+    </center>
     <br>
     <div>
         <center>
-            <img src="images/Original.png" style="max-width:80%;max-height:80%;">
+            <img src="~/images/Original.png" style="max-width:80%;max-height:80%;">
         </center>
     </div>
 </body>
 
+<br>
+<p>
+    I have other questions I need to ask? Well, how about you <a href="mailto:contact@algoromida.com">send us an Email.</a>
+</p>

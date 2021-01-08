@@ -36,7 +36,8 @@ namespace Algoromida_01.Areas.Identity.Pages.Account
             }
             else
             {
-                return RedirectToPage();
+                return Page();
+		//return RedirectToPage();
                 //return RedirectToAction("Index", "Home");
             }
         }

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="~/css/xsite.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/site.css" />
     <link rel="stylesheet" href="~/js/site.js" />
 
 </head>
@@ -23,6 +23,15 @@
                             <li class="nav-item">
                                 <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
+			    <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Clusters">Clusters</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Manifesto">Manifesto</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -36,7 +45,7 @@
         </div>
 
 
-        <div class="footer" align="center">
+        <div class="footer" align="center" style="color:#E8DF00">
             &copy; 2021 Copyright Algoromida LLC
         </div>
 

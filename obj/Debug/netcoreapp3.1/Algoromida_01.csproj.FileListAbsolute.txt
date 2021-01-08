@@ -879,3 +879,10 @@
 /home/hshallal/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/Login.cshtml.g.cs
 /home/hshallal/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/Manage/Logout.cshtml.g.cs
 /home/hshallal/Algoromida_01/Algoromida_01/bin/Debug/netcoreapp3.1/appsettings.json
+/home/hshallal/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/Home/Clusters.cshtml.g.cs
+/home/hshallal/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/Home/Manifesto.cshtml.g.cs
+/home/hshallal/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/Home/Privacy.cshtml.g.cs
+/home/hshallal/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/ForgotPassword.cshtml.g.cs
+/home/hshallal/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml.g.cs
+/home/hshallal/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/ResetPassword.cshtml.g.cs
+/home/hshallal/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml.g.cs

@@ -5,9 +5,9 @@
     <center>
         <div class="interaction_protocol">
             <div class="input_msg_write">
-                <button class="msg_listen_btn" type="button" onclick="runSpeechRecognition()">I want to talk to @Model.BotId</button> &nbsp; <span id="action"></span>
-                <textarea asp-for="UserQuery" id="output" class="form-control"></textarea>
-                <button class="msg_send_btn" type="submit">Send it to @Model.BotId</button>
+                <button class="msg_listen_btn" type="button" onclick="runSpeechRecognition()">Express to @Model.BotId</button> &nbsp; <span id="action"></span>
+                <textarea asp-for="UserQuery" id="output" class="form-control" placeholder="Confirm your message."></textarea>
+                <button class="msg_send_btn" type="submit">Communicate with  @Model.BotId</button>
             </div>
         </div>
     </center>
