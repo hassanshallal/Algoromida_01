@@ -886,3 +886,7 @@
 /home/hshallal/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml.g.cs
 /home/hshallal/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/ResetPassword.cshtml.g.cs
 /home/hshallal/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml.g.cs
+/home/hshallal/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/Home/Contact.cshtml.g.cs
+/home/hshallal/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/Home/FailMessage.cshtml.g.cs
+/home/hshallal/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/Home/IssueContactPartial.cshtml.g.cs
+/home/hshallal/Algoromida_01/Algoromida_01/obj/Debug/netcoreapp3.1/Razor/Views/Home/SuccessMessage.cshtml.g.cs
