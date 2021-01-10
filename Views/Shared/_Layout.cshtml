@@ -1,61 +1,62 @@
-﻿<!DOCTYPE html>
+@using Microsoft.AspNetCore.Identity
+@using Algoromida_01.Models
+
+@inject SignInManager<AlgoromidaUser> SignInManager
+@inject UserManager<AlgoromidaUser> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="~/css/site.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/xsite.css" />
     <link rel="stylesheet" href="~/js/site.js" />
 
 </head>
-    <body>
-        <header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color: #0D0D0D">
-                <div class="container">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                        <partial name="_LoginPartial" />
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
-			    <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Clusters">Clusters</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Manifesto">Manifesto</a>
-                            </li>
-			    <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
+<body>
 
-        <div class="container">
-            <main role="main" class="pb-3">
-                @RenderBody()
-            </main>
-        </div>
+    <div class="topnav">
+        <a asp-controller="Home" asp-action="Index">Home</a>
+        <a asp-controller="Home" asp-action="Clusters">Clusters</a>
+        <a asp-controller="Home" asp-action="Manifesto">Manifesto</a>
+        <a asp-controller="Home" asp-action="Contact">Contact</a>
+        <a asp-controller="Home" asp-action="Privacy">Privacy</a>
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" style="float:right">
+                <button id="logout" type="submit" style="color: #E8DF00;background-color: #0D0D0D;border-color: #0D0D0D;margin-top:10px">Logout</button>
+            </form>
+            <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style="float:right">Hello @UserManager.GetUserName(User)!</a>
+        }
+        else
+        {
+            <a id="login" asp-area="Identity" asp-page="/Account/Login" style="float:right">Login</a>
+            <a id="register" asp-area="Identity" asp-page="/Account/Register" style="float:right">Register</a>
+
+        }
+    </div>
 
 
-        <div class="footer" align="center" style="color:#E8DF00">
-            &copy; 2021 Copyright Algoromida LLC
-        </div>
+    <br>
 
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        @RenderSection("Scripts", required: false)
-    </body>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    @RenderSection("Scripts", required: false)
+
+    <div class="footer" align="center" style="color:#E8DF00">
+        &copy; 2021 Copyright Algoromida LLC
+    </div>
+</body>
 </html>
+

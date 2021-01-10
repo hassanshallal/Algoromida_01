@@ -1,5 +1,28 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
+.topnav {
+    overflow: hidden;
+    background-color: #0D0D0D;
+}
+
+    .topnav a {
+        float: left;
+        color: #E8DF00;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 100%;
+    }
+
+        .topnav a:hover {
+            background-color: #9D9D9D;
+            color: #0D0D0D;
+        }
+
+        .topnav a.active {
+            background-color: #9D9D9D;
+            color: #0D0D0D;
+        }
 
 a.navbar-brand {
   white-space: normal;
@@ -126,10 +149,10 @@ img {
 }
 
     .outgoing_msg p {
-        background: #05728f none repeat scroll 0 0;
+        background: #0D0D0D none repeat scroll 0 0;
         border-radius: 25px;
         font-size: 14px;
-        color: #fff;
+        color:#E8DF00;
         margin: 0;
         padding: 5px 5px 5px 5px;
         width: 100%;
@@ -199,6 +222,7 @@ img {
     position: relative;
     background: #E8DF00;
 }
+
 
 /*Manifesto and Clusters*/
 .footer {
