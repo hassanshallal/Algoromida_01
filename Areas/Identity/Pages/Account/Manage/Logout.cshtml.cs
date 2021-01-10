@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 using Algoromida_01.Models;
-using Algoromida_01.Controllers;
+
 namespace Algoromida_01.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]

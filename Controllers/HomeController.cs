@@ -23,22 +23,26 @@ namespace Algoromida_01.Controllers
             return View();
         }
 
+	[Route("Privacy")]
 	public IActionResult Privacy()
         {
             return View();
         }
 
+	[Route("Manifesto")]
         public IActionResult Manifesto()
         {
             return View();
         }
 
-        public IActionResult Clusters()
+	[Route("Clusters")]        
+	public IActionResult Clusters()
         {
             return View();
         }
 
-        public IActionResult Contact()
+        [Route("Contact")]
+	public IActionResult Contact()
         {
             _logger.LogInformation("viewing contact");
             return View();
@@ -56,12 +60,14 @@ namespace Algoromida_01.Controllers
             return RedirectToAction("FailMessage");
         }
 
+	[Route("Contact-succeeded")]
         public IActionResult SuccessMessage()
         {
             _logger.LogInformation("contact succeeded");
             return View();
         }
 
+	[Route("Contact-failed")]
         public IActionResult FailMessage()
         {
             _logger.LogInformation("contact failed");
