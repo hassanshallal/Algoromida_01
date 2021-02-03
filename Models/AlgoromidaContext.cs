@@ -17,6 +17,7 @@ namespace Algoromida_01.Models
         }
 
         public DbSet<UserBotInteraction> Interactions { get; set; }
+	public DbSet<Contact> Contacts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

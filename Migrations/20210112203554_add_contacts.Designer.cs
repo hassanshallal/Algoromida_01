@@ -3,14 +3,16 @@ using System;
 using Algoromida_01.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Algoromida_01.Migrations
 {
     [DbContext(typeof(AlgoromidaContext))]
-    partial class AlgoromidaContextModelSnapshot : ModelSnapshot
+    [Migration("20210112203554_add_contacts")]
+    partial class add_contacts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

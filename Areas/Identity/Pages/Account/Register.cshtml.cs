@@ -1,3 +1,4 @@
+
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -160,10 +161,22 @@ namespace Algoromida_01.Areas.Identity.Pages.Account
                     user.AvatarPath = "";
                 }
                 
-               
-                if (uploadResult || fromFile == null)
+		// Verify age is over 18
+                bool over18 = false;
+                int calculatedAge = DateTime.Today.Year - user.DOB.Year;
+                if (user.DOB > DateTime.Today.AddYears(-calculatedAge))
                 {
-                    _logger.LogInformation("clean and validated uploaded File.");
+                    calculatedAge--;
+                }
+                if (calculatedAge >= 18)
+                {
+                    over18 = true;
+                }
+
+               
+                if (over18 && (uploadResult || fromFile == null))
+                {
+                    _logger.LogInformation("User is over 18 years old and has a clean and validated uploaded File.");
                     var result = await _userManager.CreateAsync(user, Input.Password);
                     if (result.Succeeded)
                     {
@@ -198,7 +211,7 @@ namespace Algoromida_01.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    _logger.LogInformation("Virus_scanned positive File or the file is unvalidated in terms of size or type.");
+                    _logger.LogInformation("User is under age 18 or Virus_scanned positive File or the file is unvalidated in terms of size or type.");
                 }
             }
 

@@ -17,12 +17,12 @@
 </head>
 <body>
 
-    <div class="topnav">
+   <div class="topnav">
         <a asp-controller="Home" asp-action="Index">Home</a>
-        <a asp-controller="Home" asp-action="Clusters">Clusters</a>
+	<a asp-controller="Home" asp-action="Clusters">Clusters</a>
         <a asp-controller="Home" asp-action="Manifesto">Manifesto</a>
         <a asp-controller="Home" asp-action="Contact">Contact</a>
-        <a asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <a asp-controller="Home" asp-action="Privacy">Terms & Privacy</a>
         @if (SignInManager.IsSignedIn(User))
         {
             <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" style="float:right">
@@ -36,7 +36,7 @@
             <a id="register" asp-area="Identity" asp-page="/Account/Register" style="float:right">Register</a>
 
         }
-    </div>
+    </div> 
 
 
     <br>
@@ -55,7 +55,7 @@
     @RenderSection("Scripts", required: false)
 
     <div class="footer" align="center" style="color:#E8DF00">
-        &copy; 2021 Copyright Algoromida LLC
+        &copy; 2021 Copyright Algoromida LLC, Laguna Beach, California, USA
     </div>
 </body>
 </html>

@@ -11,11 +11,13 @@ namespace Algoromida_01.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 	private readonly IEmailSender _emailSender;
+	private readonly AlgoromidaContext _algoromidaContext;
 
-        public HomeController(ILogger<HomeController> logger, IEmailSender emailSender)
+        public HomeController(ILogger<HomeController> logger, IEmailSender emailSender, AlgoromidaContext algoromidaContext)
         {
             _logger = logger;
 	    _emailSender = emailSender;
+	    _algoromidaContext = algoromidaContext;
         }
 
         public IActionResult Index()
@@ -23,7 +25,7 @@ namespace Algoromida_01.Controllers
             return View();
         }
 
-	[Route("Privacy")]
+	[Route("TermsAndPrivacy")]
 	public IActionResult Privacy()
         {
             return View();
@@ -53,6 +55,9 @@ namespace Algoromida_01.Controllers
         {
             if (ModelState.IsValid)
             {
+		_algoromidaContext.Add(contact);
+                await _algoromidaContext.SaveChangesAsync();
+
                 _logger.LogInformation("sending contact");
                 await _emailSender.SendEmailAsync("contact@algoromida.com", "A message from a web visitor: ", contact.FullName + " " + contact.Email + " " + contact.Message);
                 return RedirectToAction("SuccessMessage");
